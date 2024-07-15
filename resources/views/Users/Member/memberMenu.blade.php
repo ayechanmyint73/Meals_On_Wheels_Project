@@ -6,21 +6,6 @@
 
 @section('content')		
 <style>
-
-	/* .topright {
-		position: absolute;
-		top: 8px;
-		right: 16px;
-		font-size: 18px;
-	}
-
-	.topleft {
-		position: absolute;
-		top: 8px;
-		left: 16px;
-		font-size: 18px;
-	} */
-
 	p{
 		padding: 0;
 		margin: 0;
@@ -43,32 +28,37 @@
 		background-color: #2F4B26;
 		color: white;
 		padding: 10px 25px;
-		margin-top: 30px;
+		margin-top: 20px;
 		text-align: center;
 		text-decoration: none;
 		display: inline-block;
+	}
+
+	.menu_card{
+		margin-bottom: 20px;
 	}
 
 </style>
 	<body>
 		<div class="">
 			{{-- title & warning starts --}}
-			<div class="container">
+			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center animate-box">
 						<h1 style="margin-top: 50px; color:#003366; font-weight: bold;">Menus</h1>
 					</div>
 				</div>
-				<div class="alert alert-warning animate-box" role="alert">
-					<p>Based on your current location, the menu is available according to the day you are ordering and if your distance is within 
-						10 km from our food service partners.
+				<div class="alert alert-info animate-box" role="alert">
+					<p class="text-center">Based on your current location, the menu is available whether hot noon meal or frozen meal. 
+						According to the day you are ordering and if your distance is within 
+						10 km from our food service partners, the hot noon meal will be served. 
 					</p>
 				</div>
 			</div>
 			{{-- title & warning ends --}}
 
 			{{-- menu item starts --}}
-			<div class="container">				
+			<div class="menu_card container">				
 				
 				{{-- menu row starts --}}
 				<div class="row row-cols-1 row-cols-md-3 g-4">
@@ -129,27 +119,30 @@
 															
 															if ($weekday == 0 ||$weekday == 6 ) {
 																if ($DistanceKM > 10) {
-																	$meal_type = "Cold";
+																	$meal_type = "Frozen Meal";
 																	$message = "This Meal is available today";
 																}else{
 																	// sat or sun and distance less than 10 km
-																	$meal_type = "Hot";
+																	$meal_type = "Hot noon meal";
 																	$message = "This Meal available only from Monday through Friday";
 																}
 															}else{
 																if ($DistanceKM > 10) {
-																	$meal_type = "Cold";
+																	$meal_type = "Frozen Meal";
 																	$message = "Support over weekend only";
 																}else{
-																	$meal_type = "Hot";
+																	$meal_type = "Hot noon meal";
 																	$message = "This Meal is available today";
 																}
 															}
 								?>
 
 								<div class="card-body">
-									{{-- <p class="text-right">{{ $meal_type }}</p>
-									<p class="text-left"><?php echo $DistanceKM; ?>Km&nbsp;near you</p> --}}
+									<div class="d-flex justify-content-between">
+										<p class="text-right">{{ $meal_type }}</p>
+										<p class="text-left"> <?php echo $DistanceKM;?> Km &nbsp;near you</p>
+									</div>
+									
 
 									<h5 class="card-title">{{ $menu->menu_title }}</h5>
 									<p class="card-text"><span style="color: black; font-weight: bold;">Description:</span> {{ $menu->menu_description }}</p>
