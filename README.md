@@ -15,3 +15,31 @@ To run the code,
 12) Type php artisan serve
 
 Hope this help :)
+
+Just a gentle reminder for our updates
+
+Firstly, navigate to your project location, use 
+
+cd /path/to/your/laravel_project
+
+Then, 
+
+1. To update our latest code changes, use 
+
+-> git pull origin main
+
+2. Make updates in your code
+
+4. To add modified files, use
+
+-> git add .
+
+4. To commit your changes
+
+-> git commit -m "Describe your changes here"
+
+5. To push your changes to git
+
+-> git push origin main
+
+Just a gentle reminder for our updated codes, plz kindly update our updated changes
