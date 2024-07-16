@@ -156,7 +156,7 @@ class MemberController extends Controller
 
         //save selected order
         if ($order_selected->order_received_status == null) {
-            $order_selected->order_received_status = "Received Well";
+            $order_selected->order_received_status = "Received";
         }
 
         $order_selected->save();

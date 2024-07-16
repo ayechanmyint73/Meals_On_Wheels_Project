@@ -34,6 +34,7 @@
                         <th>Assigned Rider</th>
                         <th>Delivery Status</th>
                         <th>Confirm Receive</th>
+                        <th>Feedback</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -58,6 +59,13 @@
                             <input type="text" name="order_received_status" value="{{ $orderData -> order_received_status}}" readonly/>
                             <button  type="submit" class="btn btn-primary">Received?</button>
                             </form>
+                        </td>
+                        <td>
+                          @if($orderData->order_received_status == 'Received')
+                            <a href="{{ route('feedback.create', $orderData->id) }}" class="btn btn-success">Give Feedback</a>
+                          @else
+                            <span class="text-muted">Not yet received</span>
+                          @endif
                         </td>
                       </tr>
                     
