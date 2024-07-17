@@ -23,4 +23,8 @@ class Member extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public function feedback(){
+        return $this->hasMany(Feedback::class);
+    }
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\DeliverController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\DonationController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\VolunteerController;
 
 /*
@@ -86,6 +87,11 @@ Route::group(['prefix' => 'member'], function () {
     Route::get('/updateProfile/{id}', [MemberController::class, 'updateProfile'])->name('member#updateProfile');
     Route::get('/reassesment/{id}', [MemberController::class, 'reassesment'])->name('member#reassesment');
     Route::post('/newReassesment//{id}', [MemberController::class, 'newReassesment'])->name('member#newReassesment');
+    
+    Route::get('/feedback/create/{order_id}', [FeedbackController::class, 'create'])->name('feedback.create');
+    Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.store');
+    Route::get('/member/feedback/{id}', [FeedbackController::class, 'show'])->name('feedback.show');
+    Route::get('/my-feedbacks', [FeedbackController::class, 'index'])->name('feedback.index');
 });
 
 //Partner
