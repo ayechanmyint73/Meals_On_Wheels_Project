@@ -39,8 +39,8 @@
     }
 
 	.menu_btn{
-        border-radius: 20px;
-        border:1px solid #2F4B26;
+        border-radius: 25px;
+        border:2px solid #2F4B26;
 		color: black;
 		padding: 8px 25px;
 		text-align: center;
@@ -60,6 +60,7 @@
         background-color: #f8f9fa; 
         color: red;
     }
+
 
 </style>
 	<body>
@@ -82,109 +83,88 @@
 			{{-- title & warning ends --}}
 
 			{{-- menu item starts --}}
-			<div class="container menu_card">				
-				
+			<div class="container menu_card">
 				{{-- menu row starts --}}
 				<div class="row row-cols-1 row-cols-md-3 g-4">
-					<div class="col">
-						{{-- looping for each menu starts --}}
-						@foreach ($menuData as $menu)
-							<div class="card h-100 shadow lg p-3 bg-white rounded">
-
-								<img src="{{ asset('uploads/meal/' . $menu->menu_image) }}" class="card-img-top" alt="menu image" width="100%" height="300px;">
-
-								<?php $partner_id = DB::table('menus')->where('id',$menu->id)->value('partner_id');
-													
-													$partner_user_id = DB::table('partners')->where('id',$partner_id)->value('user_id');
-													
-													$partner_geolocation = DB::table('users')->where('id',$partner_user_id)->value('geolocation');
-													
-													$user_geolocation = DB::table('users')->where('id',Auth()->user()->id)->value('geolocation');
-													
-										$user_arr = preg_split ("/\,/", $user_geolocation); 
-															$partner_arr = preg_split ("/\,/", $partner_geolocation);
-									
-										$Lat1 = $user_arr[0];
-										$Long1 =  $user_arr[1];
-										$Lat2 = $partner_arr[0] ;
-										$Long2 = $partner_arr[1];
-										$DistanceKM = 0;
-										$DistanceMeter = 0;
-
-										if (isset($_POST['Lat1'])) {
-										$Lat1 = $_POST['Lat1'];
-										$Long1 = $_POST['Long1'];
-										$Lat2 = $_POST['Lat2'];
-										$Long2 = $_POST['Long2'];
-										}
-
-										$R = 6371;
-
-										$Lat = $Lat2 - $Lat1;
-										$Long = $Long2 - $Long1;
-
-										$dLat1 = deg2rad($Lat);
-										$dlong1 = deg2rad($Long);
-
-										$a =
-										sin($dLat1 / 2) * sin($dLat1 / 2) +
-										cos(deg2rad($Lat1)) * cos(deg2rad($Lat2)) *
-										sin($dlong1 / 2) * sin($dlong1 / 2);
-
-										$c = 2 * atan2(sqrt($a), sqrt(1 - $a));
-
-										$DistanceKM = $R * $c;
-
-										$DistanceMeter = $DistanceKM * 1000;
-
-										$DistanceKM = round($DistanceKM, 3);
-
-															$weekday=date("w");
-															
-															if ($weekday == 0 ||$weekday == 6 ) {
-																if ($DistanceKM > 10) {
-																	$meal_type = "Cold meal";
-																	$message = "This Meal is available today";
-																}else{
-																	// sat or sun and distance less than 10 km
-																	$meal_type = "Hot meal";
-																	$message = "This Meal available only from Monday through Friday";
-																}
-															}else{
-																if ($DistanceKM > 10) {
-																	$meal_type = "Cold meal";
-																	$message = "Support over weekend only";
-																}else{
-																	$meal_type = "Hot meal";
-																	$message = "This Meal is available today";
-																}
-															}
+					{{-- looping for each menu starts --}}
+					@foreach ($menuData as $menu)
+						<div class="col">
+							<div class="card h-100 shadow-lg p-3 bg-white rounded">
+								<img src="{{ asset('uploads/meal/' . $menu->menu_image) }}" class="card-img-top" alt="menu image" style="width: 100%; height: 300px; object-fit: cover;">
+			
+								<?php 
+								$partner_id = DB::table('menus')->where('id',$menu->id)->value('partner_id');
+								$partner_user_id = DB::table('partners')->where('id',$partner_id)->value('user_id');
+								$partner_geolocation = DB::table('users')->where('id',$partner_user_id)->value('geolocation');
+								$user_geolocation = DB::table('users')->where('id',Auth()->user()->id)->value('geolocation');
+			
+								$user_arr = preg_split ("/\,/", $user_geolocation); 
+								$partner_arr = preg_split ("/\,/", $partner_geolocation);
+			
+								$Lat1 = $user_arr[0];
+								$Long1 = $user_arr[1];
+								$Lat2 = $partner_arr[0];
+								$Long2 = $partner_arr[1];
+								$DistanceKM = 0;
+			
+								$R = 6371;
+								$Lat = $Lat2 - $Lat1;
+								$Long = $Long2 - $Long1;
+			
+								$dLat1 = deg2rad($Lat);
+								$dLong1 = deg2rad($Long);
+			
+								$a = sin($dLat1 / 2) * sin($dLat1 / 2) +
+									 cos(deg2rad($Lat1)) * cos(deg2rad($Lat2)) *
+									 sin($dLong1 / 2) * sin($dLong1 / 2);
+			
+								$c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+								$DistanceKM = $R * $c;
+								$DistanceKM = round($DistanceKM, 3);
+			
+								$weekday = date("w");
+			
+								if ($weekday == 0 || $weekday == 6) {
+									if ($DistanceKM > 10) {
+										$meal_type = "Cold meal";
+										$message = "This Meal is available today";
+									} else {
+										$meal_type = "Hot meal";
+										$message = "This Meal available only from Monday through Friday";
+									}
+								} else {
+									if ($DistanceKM > 10) {
+										$meal_type = "Cold meal";
+										$message = "Support over weekend only";
+									} else {
+										$meal_type = "Hot meal";
+										$message = "This Meal is available today";
+									}
+								}
 								?>
-
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $menu->menu_title }}</h5>
-                                    <p class="card-text">
-                                        {{ $menu->menu_description }}
-                                    </p>
-                                    <div class="d-flex justify-content-between align-items-center ">
-                                        <div>
-                                            <p class="mb-1 menu_loc">{{ $meal_type }}</p>
-                                            <p class="mb-1 menu_loc"><?php echo $DistanceKM; ?> Km&nbsp;near you</p>
-                                        </div>
-                                        <a href="{{ route('member#viewMenu', $menu->id) }}" class="menu_btn">See more</a>
-                                    </div>
-                                </div>
-                                <div class="card-footer border-success"><?php echo $message; ?></div>
-                                
+			
+								<div class="card-body">
+									<h5 class="card-title">{{ $menu->menu_title }}</h5>
+									<p class="card-text">{{ $menu->menu_description }}</p>
+									<div class="d-flex justify-content-between align-items-center">
+										<div>
+											<p class="mb-1 text-right">{{ $meal_type }}</p>
+											<p class="mb-1 text-left"><?php echo $DistanceKM; ?> Km&nbsp;near you</p>
+										</div>
+										<a href="{{ route('member#viewMenu', $menu->id) }}" class="menu_btn">See more</a>
+									</div>
+								</div>
+								<div class="card-footer border-success">
+									<?php echo $message; ?>
+								</div>
 							</div>
-
-							</div>
-						@endforeach
-						{{-- looping for each menu ends --}}
-					</div>
+						</div>
+					@endforeach
+					{{-- looping for each menu ends --}}
 				</div>
 				{{-- menu row ends --}}
 			</div>
+			
 			{{-- menu item ends --}}
 		</div>
 	</body>

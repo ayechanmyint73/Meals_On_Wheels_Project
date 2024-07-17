@@ -5,76 +5,60 @@
 @extends('Users.Member.layouts.app')
 
 @section('content')
-		<div id="fh5co-blog-section" class="fh5co-section-gray">
 
-			<div class="container">
-				<div class="row row-bottom-padded-md">
-                    <div class="container">
-                        <div class="row">
-                            <div class="jumbotron">
-								<div class="feature-text animate-box">
-                                	<h1>Food Safety Declaration</h1>
-                                	<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								</div>
-								<div class="feature-text animate-box">
-                                	<h3>Food Safety I</h3>
-                                	<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								</div>
-								<div class="feature-text animate-box">
-                                	<h3>Food Safety II</h3>
-                                	<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								</div>
-                                <div class="feature-text animate-box">
-                                	<h3>Food Safety III</h3>
-                                	<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								</div>
-                                <div class="feature-text animate-box">
-                                	<h3>Food Safety IV</h3>
-                                	<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								</div>
-                                <div class="feature-text animate-box">
-                                	<h3>Food Safety V</h3>
-                                	<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								</div>
-                                <div class="feature-text animate-box">
-                                	<h3>Food Safety VI</h3>
-                                	<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								</div>
-                              </div>
-                        </div>
-                        
-                    </div>
-                    <div class="row animate-box">
-						<div class="col-sm-1">
-							<div class="form-group">
-								<a href="javascript:history.go(-1)"><input type="submit" value="Back" class="btn btn-primary"></a>
-							</div>
-						</div>
-					</div>
-				</div>
+<style>
+	h1 {
+        margin: 50px 0;
+		color:#003366;
+		font-weight: bold;
+		text-transform:capitalize;
+		text-align: center;
+    }
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    li {
+        margin-bottom: 10px;
+    }
 
-			</div>
-		</div>
+	.back_btn {
+        display: inline-block;
+        padding: 10px 20px;
+		margin: 25px 0;
+        font-size: 16px;
+        color: #fff;
+        background-color: #2F4B26;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        text-align: center;
+    }
 
-	<!-- jQuery -->
+</style>
 
+<body>
+	<div class="container">
+		<h1>Food Safety Standards for Meals on Wheels Application</h1>
 
-	<script src="{{ asset('js/jquery.min.js') }}" defer></script>
-	<!-- jQuery Easing -->
-	<script src="{{ asset('js/jquery.easing.1.3.js') }}" defer></script>
-	<!-- Bootstrap -->
-	<script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
-	<!-- Waypoints -->
-	<script src="{{ asset('js/jquery.waypoints.min.js') }}" defer></script>
-	<script src="{{ asset('js/sticky.js') }}"></script>
+		<p>Welcome to MerryMeal's commitment to food safety! At MerryMeal, we prioritize the safety and quality of our food products. Our food safety standards are designed to ensure that every meal served through our platform meets the highest safety and hygiene standards.</p>
+    
+    	<p>Below are the key food safety standards we adhere to:</p>
 
-	<!-- Stellar -->
-	<script src="{{ asset('js/jquery.stellar.min.js') }}" defer></script>
-	<!-- Superfish -->
-	<script src="{{ asset('js/hoverIntent.js') }}" defer></script>
-	<script src="{{ asset('js/superfish.js') }}" defer></script>
-	
-	<!-- Main JS -->
-	<script src="{{ asset('js/main.js') }}" defer></script>
+		<ul>
+			<li><strong>Hazard Analysis Critical Control Point (HACCP):</strong> Implement a HACCP plan to identify and control food safety hazards.</li>
+			<li><strong>Good Manufacturing Practices (GMPs):</strong> Adhere to GMP guidelines to ensure safe and hygienic food handling and processing.</li>
+			<li><strong>Traceability and Recall Systems:</strong> Maintain systems to trace food products throughout the supply chain and enable quick recalls if necessary.</li>
+			<li><strong>Training and Education:</strong> Provide ongoing training for staff on food safety practices and procedures.</li>
+			<li><strong>Risk Assessment and Management:</strong> Conduct regular risk assessments to identify and mitigate potential food safety risks.</li>
+			<li><strong>Regulatory Compliance:</strong> Ensure compliance with local, national, and international food safety regulations.</li>
+			<li><strong>Monitoring and Verification:</strong> Regularly monitor and verify food safety controls to ensure effectiveness.</li>
+		</ul>
+
+		<p>By adhering to these standards, MerryMeal - Meals on Wheels aims to uphold the trust and confidence of our customers and partners, ensuring that every meal delivered through our platform is safe, nutritious, and of the highest quality.</p>
+
+		<a href="javascript:history.go(-1)" class="back_btn">Back</a>
+	</div>
+</body>
 
 @endsection

@@ -122,6 +122,8 @@ class AdminController extends Controller
         $menuArray = [
             'menu_title' => $request->menu_title,
             'menu_description' => $request->menu_description,
+            'menu_allergens' => $request->menu_allergens,
+            'menu_nutritions' => $request->menu_nutritions,
             'partner_id' => $request->partner,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

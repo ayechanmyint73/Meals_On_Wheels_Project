@@ -21,64 +21,114 @@
 
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
+<style>
+	.update_menu{
+		padding: 20px 0;
+	}
+	label{
+		padding-top: 20px;
+	}
 
-<!-- Modernizr JS -->
-<script src="{{ asset('js/modernizr-2.6.2.min.js') }}" defer></script>
+	.update_btn{
+		background-color: #2F4B26;
+		color: white;
+		margin-top: 15px;
+		padding: 10px 5px;
+		justify-content: center;
+	}
 
-		<div id="fh5co-blog-section" class="fh5co-section-gray">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-					<h3><h1>Update {{ $updateMenu->menu_title }}</h1></h3>
+</style>
+
+<body>
+	<div class="container animate-box update_menu">
+		<h1 style="margin-top: 50px; color:#003366; font-weight: bold; text-transform:capitalize;" class="text-center">Update {{ $updateMenu->menu_title }} </h1>
+
+		<div class="row">
+			<form action="{{ route('partner#saveUpdate', $updateMenu->id) }}" method="POST" enctype="multipart/form-data">
+				@csrf
+				<div class="col-sm-6">
+					@if ($updateMenu->menu_image)
+						<img src="{{ asset('uploads/meal/'. $updateMenu->menu_image) }}" class="img-fluid" alt="menu image ">
+					@endif
 				</div>
-			</div>
-			<div class="container">
-				<div class="row row-bottom-padded-md">
-                    <div class="container">
-                        <div class="row">
-							<form action="{{ route('partner#saveUpdate', $updateMenu->id) }}" method="POST" enctype="multipart/form-data">
-								@csrf
-								<div class="col-lg-6 animate-box">									
-									@if ($updateMenu->menu_image)
-										<img src="{{ asset('uploads/meal/'. $updateMenu->menu_image) }}" class="img-thumbnail" alt="menu image ">
-										<br>
-									@endif
-								</div>
-								<div class="col-lg-6" style="padding-left: 60px">
-									<div class="row">
-										<div>
-											<div class="form-group animate-box">
-												<label for="basic-url">Menu Title</label>
-												<input type="text" class="form-control" placeholder="Put your menu title here" name="menu_title" value="{{ old('menu_title', $updateMenu->menu_title) }}" required>
-											</div>
-										</div>
-										<div>
-											<div class="form-group animate-box">
-												<label for="basic-url">Menu Description</label>
-												<textarea class="form-control" id="" cols="30" rows="7" placeholder="Put your menu description here" name="menu_description" required>{{ old('menu_description', $updateMenu->menu_description) }}</textarea>
-											</div>
-										</div>
-										<div>
-											<div class="form-group animate-box">
-												<label for="basic-url">Menu Picture</label>
-												<input type="file" class="form-control" name="menu_image" value="{{ $updateMenu->menu_image }}" required>
-											</div>
-										</div>
-										<div>
-											<input type="hidden" class="form-control" placeholder="Put your partner name here" name="partner" value="{{ $partnerData->id }}" required>
-										</div>
-										<div>
-											<div class="form-group animate-box">
-												<input type="submit" value="Update" class="btn btn-primary">
-											</div>
-										</div>
-									</div>
-								</div>
-							</form>   
-                        </div>
-                    </div>
+
+				<div class="col-sm-6">
+					<label for="basic-url">Menu Title</label>
+					<input type="text" class="form-control" placeholder="Put your menu title here" name="menu_title" value="{{ old('menu_title', $updateMenu->menu_title) }}" required>
+
+					<label for="basic-url">Menu Description</label>
+					<textarea class="form-control" id="" cols="30" rows="7" placeholder="Put your menu description here" name="menu_description" required>{{ old('menu_description', $updateMenu->menu_description) }}</textarea>
+
+					<label for="basic-url">Menu Picture</label>
+					<input type="file" class="form-control" name="menu_image" value="{{ $updateMenu->menu_image }}" required>
+
+					<label for="basic-url">Allergens</label>
+					<textarea class="form-control" id="" cols="30" rows="5" placeholder="Allergens information" name="menu_allergens" required>{{ old('menu_allergens', $updateMenu->menu_allergens) }}</textarea>
+
+					<label for="menu_nutritions">Nutritions</label>
+    				<textarea class="form-control" id="menu_nutritions" name="menu_nutritions" rows="5" placeholder="Enter nutrients in this format: Calories: XXX, Proteins: XXX, ..." required>{{ old('menu_nutritions', $updateMenu->menu_nutritions) }}</textarea>
+    				<small id="nutritionsHelp" class="form-text text-muted">Please enter nutrients in the format: Calories: XXX, Proteins: XXX, ...</small><br>
+
+					<input type="hidden" class="form-control" placeholder="Put your partner name here" name="partner" value="{{ $partnerData->id }}" required>
+
+					<input type="submit" value="Update Menu" class="update_btn p-3">
 				</div>
-			</div>
+			</form>
 		</div>
+	</div>
+	
+	
+</body>
+
+
+		{{-- <div class="container">
+			<div class="col-md-8 col-md-offset-2 text-center animate-box">
+				<h1 style="margin-top: 50px; color:#003366; font-weight: bold; text-transform:capitalize;">Update {{ $updateMenu->menu_title }} </h1>
+			</div>
+
+			<div class="row">
+				<form action="{{ route('partner#saveUpdate', $updateMenu->id) }}" method="POST" enctype="multipart/form-data">
+					@csrf
+					<div class="col-sm-6 animate-box">									
+						@if ($updateMenu->menu_image)
+							<img src="{{ asset('uploads/meal/'. $updateMenu->menu_image) }}" class="img-thumbnail" alt="menu image ">
+							<br>
+						@endif
+					</div>
+					<div class="col-sm-6" style="padding-left: 60px">
+						<div class="row">
+							<div>
+								<div class="form-group animate-box">
+									<label for="basic-url">Menu Title</label>
+									<input type="text" class="form-control" placeholder="Put your menu title here" name="menu_title" value="{{ old('menu_title', $updateMenu->menu_title) }}" required>
+								</div>
+							</div>
+							<div>
+								<div class="form-group animate-box">
+									<label for="basic-url">Menu Description</label>
+									<textarea class="form-control" id="" cols="30" rows="7" placeholder="Put your menu description here" name="menu_description" required>{{ old('menu_description', $updateMenu->menu_description) }}</textarea>
+								</div>
+							</div>
+							<div>
+								<div class="form-group animate-box">
+									<label for="basic-url">Menu Picture</label>
+									<input type="file" class="form-control" name="menu_image" value="{{ $updateMenu->menu_image }}" required>
+								</div>
+							</div>
+							<div>
+								<input type="hidden" class="form-control" placeholder="Put your partner name here" name="partner" value="{{ $partnerData->id }}" required>
+							</div>
+							<div>
+								<div class="form-group animate-box">
+									<input type="submit" value="Update" class="btn btn-primary">
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>   
+			</div>
+			
+		</div> --}}
 		<!-- fh5co-blog-section -->
 
 	<!-- jQuery -->

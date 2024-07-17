@@ -14,6 +14,8 @@ class Menu extends Model
         'menu_title',
         'menu_description',
         'menu_image',
+        'menu_allergens',
+        'menu_nutritions',
     ];
 
     public function partners(){

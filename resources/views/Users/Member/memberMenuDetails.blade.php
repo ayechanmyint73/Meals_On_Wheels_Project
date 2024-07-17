@@ -5,6 +5,30 @@
 @extends('Users.Member.layouts.app')
 
 @section('content')
+<style>
+	.menu_details{
+		padding: 20px 0;
+	}
+	.meal_img{
+		width: 100%;
+		height: 400px;
+	}
+
+	.menu_loc{
+        font-weight: bold;
+        color: black;
+    }
+
+	.order_btn{
+		width: 150px;
+		margin: 20px 0;
+		padding: 10px 5px;
+		border: 1px solid black;
+		background-color: #2F4B26;
+		color: white;
+		font-weight: bold;
+	}
+</style>
 <body>
     <?php 
         $partner_id = DB::table('menus')->where('id',$viewMenu->id)->value('partner_id');
@@ -83,17 +107,76 @@
 						}			
 	?>
 
-    <div id="">
+	{{-- menu details page starts --}}
+	<div class="container menu_details">
+
+		{{-- menu img and description starts --}}
+		<div class="row animate-box">
+
+			<div class="col-sm-6">
+				@if ($viewMenu->menu_image)
+                    <img src="{{ asset('uploads/meal/'. $viewMenu->menu_image) }}" class="img-fluid meal_img" alt="category image">
+                @endif
+			</div>
+
+			<div class="col-sm-6">
+				<h1 style="margin-top: 50px; color:#003366; font-weight: bold; text-transform:capitalize;">{{ $viewMenu->menu_title }} - Menu Details </h1>
+				
+				<div class="d-flex justify-content-between align-items-center ">
+					<p class="text-left menu_loc">Time Availability - <?php echo $message; ?></p>
+					<p class="text-right menu_loc">Meal Type - <?php echo $meal_type; ?></p>
+				</div>
+
+				<p>{{ $viewMenu->menu_description }}</p>
+
+			</div>
+
+			@if( $memberData->member_meal_duration != 0 )
+                @if($message == "This Meal is available today")
+                    <div class="animate-box d-flex justify-content-center align-items-center ">
+                        <a href="{{ route('member#orderConfirmation', [ 'partner_id' => $viewMenu -> partner_id, 'menu_id' => $viewMenu-> id, 'user_id' => Auth()->user()->id]) }}"> <input type="submit" value="Order Now" class="order_btn"></a>
+                    </div>
+                @endif
+            @endif
+		</div>
+		{{-- menu img and description ends --}}
+
+		<hr>
+		{{-- allergens & info starts --}}
+		<h3 style="margin-top: 50px; color:#003366; font-weight: bold; text-transform:capitalize;">Allergens + nutrition information </h3>
+		<div class="row">
+			{{-- allergens --}}
+			<div class="col-sm-4">
+				<h4 class="text-danger" style="font-weight: bold;">Allergens</h4>
+				<p class="all_text">{{ $viewMenu->menu_allergens }}</p>
+			</div>
+
+			{{-- infomation --}}
+			<div class="col-sm-8">
+				<h4 class="text-danger" style="font-weight: bold;">Nutritional Information</h4>
+				<p class="all_text">The detail nutritional information for this meal are as follows: <br>
+					{{ $viewMenu->menu_nutritions }}
+				</p>
+				
+				<a href="{{ route('partner#foodSafety') }}" style="text-decoration: underline; color:#003366;">Click here to view food safety standards -> </a>
+			</div>
+		</div>
+		{{-- allergens & info ends --}}
+	</div>
+	
+	{{-- menu details page ends --}}
+
+    {{-- <div id="">
         {{-- title starts --}}
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center animate-box">
                 <h1 style="margin-top: 50px; color:#003366; font-weight: bold; text-transform:capitalize;">{{ $viewMenu->menu_title }} - Menu Details </h1>
             </div>
-        </div>
+        </div> --}}
         {{-- title ends --}}
         
             
-        <div class="container">
+        {{-- <div class="container">
             <div class="row row-bottom-padded-md">
                 <div class="container">
                     <div class="row">
@@ -141,8 +224,8 @@
             
             </div>
             
-        </div>
-    </div>
+        </div> --}}
+    {{-- </div> --}}
 </body>
     
 
