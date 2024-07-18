@@ -86,8 +86,7 @@ Route::group(['prefix' => 'member'], function () {
     Route::get('/updateMemberOrder/{id}', [MemberController::class, 'updateMemberOrder'])->name('member#updateMemberOrder');
     Route::get('/updateProfile/{id}', [MemberController::class, 'updateProfile'])->name('member#updateProfile');
     Route::get('/reassesment/{id}', [MemberController::class, 'reassesment'])->name('member#reassesment');
-    Route::post('/newReassesment//{id}', [MemberController::class, 'newReassesment'])->name('member#newReassesment');
-    
+    Route::post('/newReassesment//{id}', [MemberController::class, 'newReassesment'])->name('member#newReassesment'); 
     Route::get('/feedback/create/{order_id}', [FeedbackController::class, 'create'])->name('feedback.create');
     Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.store');
     Route::get('/member/feedback/{id}', [FeedbackController::class, 'show'])->name('feedback.show');

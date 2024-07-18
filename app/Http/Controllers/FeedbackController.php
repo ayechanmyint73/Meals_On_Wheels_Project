@@ -8,9 +8,18 @@ use App\Models\Order;
 use App\Http\Requests\StoreFeedbackRequest;
 use Illuminate\Support\Facades\Auth;
 
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\Feedback;
+use App\Models\Member;
+use Auth;
+
 class FeedbackController extends Controller
 {
-    public function create($order_id){
+    public function create($order_id)
+    {
         $order = Order::findOrFail($order_id);
         $member = Member::where('user_id', Auth::id())->first();
         
@@ -21,13 +30,15 @@ class FeedbackController extends Controller
         return view('Users.Member.feedback.create', compact('order', 'member'));
     }
 
-    public function store(StoreFeedbackRequest $request){
-        $validated = $request->validated();
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'order_id' => 'required|exists:orders,id',
+            'rating' => 'required|integer|min:1|max:5',
+            'comments' => 'nullable|string',
+        ]);
         
-        // Method 1: Using User's ID directly
         $user_id = Auth::id();
-        
-        // Method 2: Fetching Member record separately
         $member = Member::where('user_id', $user_id)->first();
         
         if (!$member) {
@@ -36,7 +47,7 @@ class FeedbackController extends Controller
         
         $feedback = Feedback::create([
             'order_id' => $validated['order_id'],
-            'member_id' => $member->id, // Use the fetched member's ID
+            'member_id' => $member->id,
             'rating' => $validated['rating'],
             'comments' => $validated['comments'],
             'feedback_date' => now(),

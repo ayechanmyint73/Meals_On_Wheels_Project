@@ -91,14 +91,22 @@ class OrderController extends Controller
      */
     public function showOrderDelivery($id)
     {
-        //show order and delivery status
+        // Fetch latest order and delivery status for the member
         $order_data = Order::where('user_id', $id)->latest('created_at')->first();
         $delivery_data = Deliver::where('user_id', $id)->latest('created_at')->first();
+    
+        // Fetch all orders for the member
+        $orders = Order::where('user_id', $id)
+                       ->orderBy('created_at', 'desc')
+                       ->get();
+    
         return view('Users.Member.memberOrderDelivery')->with([
             'orderData' => $order_data,
             'deliverData' => $delivery_data,
+            'orders' => $orders,
         ]);
     }
+    
 
     public function AllOrderForPartner($id)
     {
@@ -155,5 +163,19 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function viewOrdersByMember($member_id)
+    {
+        // Ensure only the authenticated member can view their own orders
+        if ($member_id != Auth::id()) {
+            abort(403); // Unauthorized access
+        }
+
+        $orders = Order::where('user_id', $member_id)
+                       ->orderBy('created_at', 'desc')
+                       ->get();
+
+        return view('Users.Member.allOrders', ['orders' => $orders]);
     }
 }

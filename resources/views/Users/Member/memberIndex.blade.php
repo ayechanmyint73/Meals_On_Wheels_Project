@@ -18,6 +18,7 @@
         Please Undergo Reassesment to continue with your 30 days meal plan<a href="{{ route('member#reassesment', Auth()->user()->id) }}"> Click here to apply for reassesment</a>
     </div>
     @endif
+    
     <h1>Member Details</h1>
 <table class="table table-bordered" >
 

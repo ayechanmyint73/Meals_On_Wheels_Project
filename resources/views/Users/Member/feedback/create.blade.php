@@ -3,11 +3,11 @@
 @section('title', 'Give Feedback')
 
 @section('content')
-<div class="container mt-5">
+<div class="container mt-5 pt-5 pb-5"> <!-- Added pt-4 and pb-4 for padding top and bottom -->
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Give Feedback for Order #{{ $order->id }}</div>
+                <div class="card-header text-center">Give Feedback for Order #{{ $order->id }}</div>
 
                 <div class="card-body">
                     @if ($errors->any())
@@ -24,8 +24,8 @@
                         @csrf
                         <input type="hidden" name="order_id" value="{{ $order->id }}">
 
-                        <div class="form-group row mb-3">
-                            <label for="rating" class="col-md-4 col-form-label text-md-right">Rating</label>
+                        <div class="form-group row justify-content-center">
+                            <label for="rating" class="col-md-2 col-form-label text-md-right">Rating</label>
                             <div class="col-md-6">
                                 <select id="rating" name="rating" class="form-control" required>
                                     <option value="">Select a rating</option>
@@ -37,17 +37,17 @@
                                 </select>
                             </div>
                         </div>
-
-                        <div class="form-group row mb-3">
-                            <label for="comments" class="col-md-4 col-form-label text-md-right">Comments</label>
+                        <br>
+                        <div class="form-group row justify-content-center">
+                            <label for="comments" class="col-md-2 col-form-label text-md-right">Comments</label>
                             <div class="col-md-6">
                                 <textarea id="comments" name="comments" class="form-control" rows="4"></textarea>
                             </div>
                         </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                        <br>
+                        <div class="form-group row justify-content-center">
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-primary btn-block">
                                     Submit Feedback
                                 </button>
                             </div>

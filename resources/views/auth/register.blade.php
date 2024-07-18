@@ -349,7 +349,8 @@
             <button type="reset" class="btn btn-outline-danger" style="float: right;margin-right: 20px;">Clear</button>
 
         </form>
-
+          <br>
+          <h4>Already have an account yet? <span><a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Login here.</a></span></h4>        
        
 
       </div>

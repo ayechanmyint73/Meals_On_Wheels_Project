@@ -53,25 +53,41 @@
 <body style="min-height: 100vh;
 display: flex;
 flex-direction: column;">
-    <!-- Option 1: Bootstrap Bundle with Popper -->
+ <style>
+  .sf-menu li a {
+    font-size: 20px;
+    font-weight: bold;
+    color: #3d6359;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    transition: color 0.3s ease;
+    text-decoration: none !important;
+  }
 
+  .sf-menu li a:hover {
+    color: #132923 !important; 
+  }
+    .dropdown-menu {
+        padding: 10px;
+    }
 
-<!-- Start nav -->
-<div class="header-top">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-sm-6 text-left fh5co-link">
-                <a href="/contact">Contact</a>
-                <a href="/terms">Terms and Conditions</a>
-            </div>
-            <div class="col-md-6 col-sm-6 text-right fh5co-social">
-                <a href="#" class="grow"><i class="icon-facebook2"></i></a>
-                <a href="#" class="grow"><i class="icon-twitter2"></i></a>
-                <a href="#" class="grow"><i class="icon-instagram2"></i></a>
-            </div>
-        </div>
-    </div>
-</div>
+    .dropdown-item {
+        font-size: 16px;
+        font-weight: normal;
+        color: #3d6359; 
+        text-transform: uppercase; 
+        white-space: nowrap; 
+        transition: color 0.3s ease;
+        text-decoration: none !important;
+    }
+
+    .dropdown-item:hover {
+        color: #132923 !important; 
+    }
+</style>
+
 <header id="fh5co-header-section" class="sticky-banner">
     <div class="container">
         <div class="nav-header">
@@ -88,45 +104,56 @@ flex-direction: column;">
                         <li><a href="{{ route('member#viewAllMenu') }}">Menu</a></li>
                         
                         <li><a href="/about">About</a></li>
-                         <li><a href="/contact">Contact</a></li>
+                        <li><a href="/contact">Contact</a></li>
                         
-                          <button type="button" class="btn btn-blue dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" 
+                        <button type="button" class="btn btn-blue dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" 
                           style="
-                                padding: 12px 16px;">
+                                font-size: 20px;
+                                font-weight: bold;
+                                color: #ffffff; /* White text */
+                                background-color: #3d6359; /* Light Green */
+                                border: none;
+                                padding: 10px 20px;
+                                border-radius: 5px;
+                                transition: background-color 0.3s ease;
+                                text-decoration: none !important; /* Remove underline */
+                                text-transform: uppercase; 
+                                display: inline-block; ">
                               {{ Auth()->user()->name }}
-                          </button>
-                          <ul class="dropdown-menu dropdown-menu-end">
-                              <li><a class="dropdown-item" href="{{ route('member#updateProfile', Auth()->user()->id) }}">Update </a></li>
-                              <?php 
-                                    $order_id = DB::table('orders')->where('user_id',Auth()->user()->id)->value('id');
-                              ?>
-                              @if($order_id != null)
-                              <li><a class="dropdown-item" href="{{ route('order#showOrderDelivery', Auth()->user()->id) }}">My Order</a></li>
-                              @endif
-                              
-                              <li>
-                                  <a class="dropdown-item" href="#">
-                                      <form action="{{ route('logout') }}" method="post">
-                                          @csrf
-                                          <button type="submit" class="btn pt-0 pb-1 px-0 nav-link text-dark" style="button:focus { outline: none; }" >  <i class="fas fa-sign-out-alt" ></i> Logout </button>
-                                      </form>
-                                  </a>
-                              </li>
-                          </ul>
-                      
-                      
-                  
-                    </ul>
-
-                     
-                    
-                 
-                
-            </nav>
-          
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" style="min-width: auto;">
+                            <li>
+                                <button class="dropdown-item" style="font-size: 25px;">
+                                    <a href="{{ route('member#updateProfile', Auth()->user()->id) }}">
+                                        Update Profile
+                                    </a>
+                                </button>
+                            </li>
+                            <?php 
+                                $order_id = DB::table('orders')->where('user_id', Auth()->user()->id)->value('id');
+                            ?>
+                            @if($order_id != null)
+                            <li>
+                                <button class="dropdown-item" style="font-size: 25px;">
+                                    <a href="{{ route('order#showOrderDelivery', Auth()->user()->id) }}">
+                                        My Order
+                                    </a>
+                                </button>
+                            </li>
+                            @endif
+                            <li>
+                                <form action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item" style="font-size: 25px;">
+                                        <a>Logout</a>
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>                            
+             </nav>
         </div>
     </div>
-</header>
+ </header>
 
 
 <!-- END nav -->

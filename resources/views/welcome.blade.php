@@ -6,30 +6,48 @@
 
 @section('content')
 
-    </head>
+</head>
+<style>
+    /* Custom CSS for equal height columns and button alignment */
+    #fh5co-features .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    #fh5co-features .col-md-4 {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 50px;
+    }
+    #fh5co-features .feature-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Center vertically */
+        height: 100%;
+    }
+    #fh5co-features .feature-left .icon {
+        margin-right: 10px; /* Adjust icon spacing */
+    }
+    #fh5co-features .feature-copy {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    #fh5co-features .feature-copy h2,
+    #fh5co-features .feature-copy p {
+        margin-bottom: 15px;
+    }
+    #fh5co-features .feature-copy .btn {
+        margin-top: auto; /* Pushes the button to the bottom */
+    }
+</style>
     <body class="antialiased">
-        {{-- <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-        </div> --}}
-
-            <div id="fh5co-wrapper">
+           <div id="fh5co-wrapper">
                 <div id="fh5co-page">
         
                 <div class="fh5co-hero">
                     <div class="fh5co-overlay"></div>
-                    <div class="fh5co-cover text-center" data-stellar-background-ratio="0.5" style="background-image: url(images/richard-r-mjuRSU6RvgU-unsplash.jpg);">
+                    <div class="fh5co-cover text-center" data-stellar-background-ratio="0.5" style="background-image: url(images/welcomebg.jpg);">
                         <div class="desc animate-box">
                             <h2><strong>Donate</strong> to give meals to <strong> Those In Need</strong></h2>
                             {{-- <span>HandCrafted by <a href="http://frehtml5.co/" target="_blank" class="fh5co-site-name">FreeHTML5.co</a></span> --}}
@@ -39,52 +57,50 @@
         
                 </div>
                 <!-- end:header-top -->
-                <div id="fh5co-features">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-4">
-        
-                                <div class="feature-left">
-                                    <span class="icon">
-                                        <i class="icon-profile-male"></i>
-                                    </span>
-                                    <div class="feature-copy">
-                                        <h3>Become a volunteer</h3>
-                                        <p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-                                        <p><a href="#">Learn More</a></p>
-                                    </div>
+                <div class="container" id="fh5co-features">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="feature-left">
+                                <span class="icon">
+                                    <i class="icon-profile-male"></i>
+                                </span>
+                                <div class="feature-copy">
+                                    <h2>Become a Volunteer</h2>
+                                    <p>Join us in supporting our mission to nourish seniors in need. Your commitment makes a lasting impact.</p>
+                                    <a href="/register" class="btn btn-primary">Sign Up Now</a>
                                 </div>
-        
                             </div>
-        
-                            <div class="col-md-4">
-                                <div class="feature-left">
-                                    <span class="icon">
-                                        <i class="icon-happy"></i>
-                                    </span>
-                                    <div class="feature-copy">
-                                        <h3>Happy Giving</h3>
-                                        <p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-                                        <p><a href="#">Learn More</a></p>
-                                    </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="feature-left">
+                                <span class="icon">
+                                    <i class="icon-hand"></i>
+                                </span>
+                                <div class="feature-copy">
+                                    <h2>Partnership Opportunities</h2>
+                                    <p>Partner with us to make a difference in the lives of seniors. Together, we can provide essential support and care.</p>
+                                    <a href="#" class="btn btn-primary">Partner With Us</a>
                                 </div>
-        
                             </div>
-                            <div class="col-md-4">
-                                <div class="feature-left">
-                                    <span class="icon">
-                                        <i class="icon-wallet"></i>
-                                    </span>
-                                    <div class="feature-copy">
-                                        <h3>Donation</h3>
-                                        <p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-                                        <p><a href="#">Learn More</a></p>
-                                    </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="feature-left">
+                                <span class="icon">
+                                    <i class="icon-wallet"></i>
+                                </span>
+                                <div class="feature-copy">
+                                    <h2>Donation</h2>
+                                    <p>Support our cause with your generosity. Every donation helps us make a difference.</p>
+                                    <a href="#" class="btn btn-primary">Donate</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+
+
+
         
                 <div id="fh5co-feature-product" class="fh5co-section-gray">
                     <div class="container">
