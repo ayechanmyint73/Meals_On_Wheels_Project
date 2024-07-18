@@ -22,59 +22,66 @@
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 
-<!-- Modernizr JS -->
-<script src="{{ asset('js/modernizr-2.6.2.min.js') }}" defer></script>
+<style>
+	.create_new{
+		padding: 25px 0;
+	}
+	label{
+		padding-top: 20px;
+	}
 
-		<div id="fh5co-blog-section" class="fh5co-section-gray">
+	.update_btn{
+		background-color: #2F4B26;
+		color: white;
+		margin-top: 15px;
+		margin-bottom: 20px;
+		border: 1px solid none;
+		border-radius: 10px;
+		padding: 10px 5px;
+		justify-content: center;
+	}
 
-			<div class="container">
-				<div class="row row-bottom-padded-md">
-                    <div class="container">
-                        <div class="row">
-							<form action="{{ route('partner#saveMenu') }}" method="POST" enctype="multipart/form-data">
-								@csrf
-								<div class="col-lg-6 animate-box" style="background-color: #ff5722;">									
-									<h1 class="animate-box" style="color: white; padding:100px 0px 100px 50px"><strong>Start<br>Creating <br>Your <br>Own <br>Menu!</strong></h1>
-								</div>
-								<div class="col-lg-6" style="padding-left: 60px">
-									<div class="row">
-										<div>
-											<div class="form-group animate-box">
-												<label for="basic-url">Menu Title</label>
-												<input type="text" class="form-control" placeholder="Put your menu title here" name="menu_title" required>
-											</div>
-										</div>
-										<div>
-											<div class="form-group animate-box">
-												<label for="basic-url">Menu Picture</label>
-												<input type="file" class="form-control" name="menu_image" required>
-											</div>
-										</div>								
-										<div>
-											<div class="form-group animate-box">
-												<label for="basic-url">Menu Description</label>
-												<textarea class="form-control" id="" cols="30" rows="7" placeholder="Put your menu description here" name="menu_description" required></textarea>
-											</div>
-										</div>
-										<div>
-											<input type="hidden" class="form-control" placeholder="Put your partner name here" name="partner" value="{{ $partnerData->id }}" required>
-										</div>
-										<div>
-											<div class="form-group animate-box">
-												<input type="submit" value="Create" class="btn btn-primary">
-											</div>
-										</div>
-									</div>
-								</div>
-							</form>   
-                        </div>
-                    </div>
+</style>
+
+<body>
+	<div class="container create_new animate-box">
+		<h1 style="margin-top: 50px; color:#003366; font-weight: bold; text-transform:capitalize;" class="text-center">Create New Menu </h1>
+
+		<div class="row ">
+			<form action="{{ route('partner#saveMenu') }}" method="POST" enctype="multipart/form-data">
+				@csrf
+				{{-- create image --}}
+				<div class="col-sm-6">
+					<img src="/images/add_new_menu_img.svg" class="img-fluid " alt="" style="padding-top: 10px;">
 				</div>
-			</div>
-		</div>
-		<!-- fh5co-blog-section -->
 
-	<!-- jQuery -->
+				{{-- create menu form starts --}}
+				<div class="col-sm-6">
+					<label for="basic-url">Menu Title</label>
+					<input type="text" class="form-control" placeholder="Menu title" name="menu_title" required>
+
+					<label for="basic-url">Menu Description</label>
+					<textarea class="form-control" id="" cols="30" rows="7" placeholder="Menu description " name="menu_description" required></textarea>
+
+					<label for="basic-url">Menu Picture</label>
+					<input type="file" class="form-control" name="menu_image" required>
+
+					<label for="basic-url">Allergens</label>
+					<textarea class="form-control" id="" cols="30" rows="5" placeholder="Allergens information" name="menu_allergens" required></textarea>
+
+					<label for="menu_nutritions">Nutritions</label>
+    				<textarea class="form-control" id="menu_nutritions" name="menu_nutritions" rows="5" placeholder="Enter nutrients in this format: Calories: XXX, Proteins: XXX, ..." required></textarea>
+    				<small id="nutritionsHelp" class="form-text text-muted">Please enter nutrients in the format: Calories: XXX, Proteins: XXX, ...</small><br>
+
+					<input type="hidden" class="form-control" placeholder="Put your partner name here" name="partner" value="{{ $partnerData->id }}" required>
+
+					<input type="submit" value="Update Menu" class="update_btn p-3">
+				</div>
+				{{-- create menu form ends --}}
+			</form>
+		</div>
+	</div>
+</body>
 
 
 	<script src="{{ asset('js/jquery.min.js') }}" defer></script>

@@ -4,7 +4,7 @@
 
 @extends('Users.Member.layouts.app')
 
-@section('content')
+@section('content')	
 <?php $partner_id = DB::table('menus')->where('id',$partnerData->id)->value('partner_id');
 											//echo $partner_id;
 											$partner_user_id = DB::table('partners')->where('id',$partner_id)->value('user_id');
