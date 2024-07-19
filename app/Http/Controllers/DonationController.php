@@ -13,14 +13,30 @@ class DonationController extends Controller
 
     public function saveDonationFee(Request $req)
     {
-        $donationFee = new DonorFee();
-        $donationFee->donor_fee = $req->input('donor_fee');
-        $donationFee->donor_tribute = $req->input('donor_tribute');
-        $donationFee->donor_honoree_name = $req->input('donor_honoree_name');
-        $donationFee->save();
-        return view('donation.billing');
-    }
+        // Validate the incoming request data
+        $validatedData = $req->validate([
+            'donor_fee' => 'required|numeric|min:1',
+            'donor_tribute' => 'required|string',
+            'donor_honoree_name' => 'required|string',
+        ]);
 
+        try {
+            $donationFee = new DonorFee();
+            $donationFee->donor_fee = $validatedData['donor_fee'];
+            $donationFee->donor_tribute = $validatedData['donor_tribute'];
+            $donationFee->donor_honoree_name = $validatedData['donor_honoree_name'];
+            $donationFee->save();
+
+            // If save is successful, redirect to the billing page
+            return view('donation.billing');
+        } catch (\Exception $e) {
+            // Log the error
+            \Log::error('Error saving donation: ' . $e->getMessage());
+
+            // Redirect back with an error message
+            return back()->withInput()->with('error', 'There was an error processing your donation. Please try again.');
+        }
+    }
     public function donor(){
         return view('donation.billing');
     }
