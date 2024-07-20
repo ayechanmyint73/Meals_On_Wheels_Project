@@ -78,11 +78,11 @@
                 <li class="active"><a href="/">Home</a></li>
                 <li><a href="/donationFee">Donate</a></li>
                 <li>
-                  <a href="{{ route('register') }}" class="fh5co-sub-ddown">Support Us</a>
+                  <a href="{{ route('choose.interest') }}" class="fh5co-sub-ddown">Support Us</a>
                   <ul class="fh5co-sub-menu">
-                    <li><a href="{{ route('register') }}">Be a member</a></li>
-                    <li><a href="{{ route('register') }}">Volunteer</a></li>
-                    <li><a href="{{ route('register') }}">Partner</a></li>
+                    <li><a href="{{ route('choose.interest') }}">Be a member</a></li>
+                    <li><a href="{{ route('choose.interest') }}">Volunteer</a></li>
+                    <li><a href="{{ route('choose.interest') }}">Partner</a></li>
                   </ul>
                 </li>
                 <li><a href="/about">About</a></li>
@@ -92,9 +92,9 @@
                 </li>
 
 
-                 @if (Route::has('register'))
+                 @if (Route::has('choose.interest'))
                     <li>
-                        <a href="{{ route('register') }}" class="btn btn-primary  ">Register</a>
+                        <a href="{{ route('choose.interest') }}" class="btn btn-primary  ">Register</a>
                     </li>
                 @endif
 

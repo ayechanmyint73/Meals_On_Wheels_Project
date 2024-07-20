@@ -10,6 +10,7 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\VolunteerController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,19 @@ Route::get('/getCompletion', [DonationController::class, 'getCompletion'])->name
 //         return view('dashboard');
 //     })->name('dashboard');
 // });
+
+// Route to display the choose interest view
+Route::get('/choose-interest', function () {
+    return view('auth.choose_interest');
+})->name('choose.interest');
+
+// Route to show the registration form
+Route::get('/register-form', [RegisterController::class, 'showRegistrationForm'])
+    ->name('register.form');
+
+// Route to handle registration form submission
+Route::post('/register', [RegisterController::class, 'register'])
+    ->name('register');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     if (Auth::check()) {
