@@ -15,6 +15,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
+use Illuminate\Support\Facades\Log;
+
+
 class AdminController extends Controller
 {
         /**
@@ -222,10 +225,8 @@ class AdminController extends Controller
 
     private function requestUpdateMember($request){
         $arr = [
-            'member_caregiver_name' => $request-> member_caregiver_name,
-            'member_caregiver_relation'=> $request->member_caregiver_relation,
-            'member_medical_condition'=> $request->member_medical_condition,
-            'member_medical_number' => $request->member_medical_number,
+            'service_eligibility' => $request-> service_eligibility,
+            'dietary'=> $request->dietary,
             'member_meal_type' => $request->member_meal_type,
             'member_meal_duration' => $request->member_meal_duration,
             'created_at' => Carbon::now(),
@@ -236,16 +237,32 @@ class AdminController extends Controller
 
     //Save Update Partner
     public function saveUpdateP(Request $request, $user_id){
+
+        Log::info('Received request for update:', $request->all());
+
         $updatePartner = $this->requestUpdatePartner($request);
         Partner::where('id', $user_id)->update($updatePartner);
 
-        return back()->with(['dataInform' => 'Profile Has Been Updated Sucessfully!']);
+        Log::info('Prepared update data:', $updatePartner);
+
+        // return back()->with(['dataInform' => 'Profile Has Been Updated Sucessfully!']);
+
+        $updated = Partner::where('user_id', $user_id)->update($updatePartner);
+
+        Log::info('Update status:', ['updated' => $updated]);
+
+        // Check if the update was successful
+        if ($updated) {
+            return back()->with(['dataInform' => 'Profile Has Been Updated Successfully!']);
+        } else {
+            return back()->withErrors(['msg' => 'Profile Update Failed!']);
+        }
     }
 
     private function requestUpdatePartner($request){
         $arr = [
             'partnership_restaurant' => $request-> partnership_restaurant,
-            'partnership_duration'=> $request->partnership_duration,
+            'partnership_duration'=> $request-> partnership_duration,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
@@ -254,22 +271,38 @@ class AdminController extends Controller
 
     //Save Update Volunteer
     public function saveUpdateV(Request $request, $user_id){
+        Log::info('Received request for update:', $request->all());
+
         $updateVolunteer = $this->requestUpdateVolunteer($request);
         Volunteer::where('id', $user_id)->update($updateVolunteer);
 
-        return back()->with(['dataInform' => 'Profile Has Been Updated Sucessfully!']);
+        Log::info('Prepared update data:', $updateVolunteer);
+
+        // return back()->with(['dataInform' => 'Profile Has Been Updated Sucessfully!']);
+
+        $updated = Volunteer::where('user_id', $user_id)->update($updateVolunteer);
+
+        Log::info('Update status:', ['updated' => $updated]);
+
+        // Check if the update was successful
+        if ($updated) {
+            return back()->with(['dataInform' => 'Profile Has Been Updated Successfully!']);
+        } else {
+            return back()->withErrors(['msg' => 'Profile Update Failed!']);
+        }
     }
 
     private function requestUpdateVolunteer($request){
         $arr = [
-            'volunteer_vaccination	' => $request-> volunteer_vaccination	,
+            'volunteer_vaccination' => $request-> volunteer_vaccination,
             'volunteer_duration'=> $request->volunteer_duration,
             'volunteer_available' => $request->volunteer_available,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
-
         return $arr;
     }
+
+   
 
 }

@@ -35,7 +35,7 @@
 
 <body class="antialiased">
     <div class="container login_form">
-        <div class="card mb-3">
+        <div class="mb-3">
             <div class="row g-0">
                 {{-- login image --}}
                 <div class="col-md-6">
@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                             <div class="">
-                                <button type="submit" class="btn" style="margin-top: 20px; width: 100%; background-color: #2F4B26; color: white;">{{ __('Login') }}</button>
+                                <button type="submit" class="btn btn-primary" style="width: 100%;">{{ __('Login') }}</button>
                             </div>
                         </form>
                         <br>

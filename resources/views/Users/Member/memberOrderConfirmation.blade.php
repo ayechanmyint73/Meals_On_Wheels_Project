@@ -1,84 +1,67 @@
-@section('title')
-	Confirm Your Order
-@endsection
-
 @extends('Users.Member.layouts.app')
 
-@section('content')	
-<?php $partner_id = DB::table('menus')->where('id',$partnerData->id)->value('partner_id');
+@section('title')
+    Confirm Your Order
+@endsection
+
+@section('content')
+
+    <?php $partner_id = DB::table('menus')->where('id',$partnerData->id)->value('partner_id');
 											//echo $partner_id;
-											$partner_user_id = DB::table('partners')->where('id',$partner_id)->value('user_id');
-											//echo $partner_user_id;
-											$partner_geolocation = DB::table('users')->where('id',$partner_user_id)->value('geolocation');
-											//echo $partner_geolocation;
-											$user_geolocation = DB::table('users')->where('id',Auth()->user()->id)->value('geolocation');
-											//echo $user_geolocation;
+											$partner_id = DB::table('menus')->where('id', $partnerData->id)->value('partner_id');
+                    $partner_user_id = DB::table('partners')->where('id', $partner_id)->value('user_id');
+                    $partner_geolocation = DB::table('users')->where('id', $partner_user_id)->value('geolocation');
+                    $user_geolocation = DB::table('users')->where('id', Auth::id())->value('geolocation');
 
-                    $user_arr = preg_split ("/\,/", $user_geolocation); 
-										$partner_arr = preg_split ("/\,/", $partner_geolocation);
-                    // print_r($str_arr);
-                    // echo $str_arr[0]. "<br/>";
-                    // echo $str_arr[1]. "<br/>";
+                    // Split geolocation into latitude and longitude
+                    $user_arr = preg_split("/\,/", $user_geolocation);
+                    $partner_arr = preg_split("/\,/", $partner_geolocation);
 
-                    $Lat1 = $user_arr[0];
-                    $Long1 =  $user_arr[1];
-                    $Lat2 = $partner_arr[0] ;
-                    $Long2 = $partner_arr[1];
-                    $DistanceKM = 0;
-                    $DistanceMeter = 0;
+                    // Validate that the arrays have at least two elements
+                    if (count($user_arr) < 2 || count($partner_arr) < 2) {
+                        $distanceKM = 'N/A';
+                        $meal_type = 'N/A';
+                        $message = 'Geolocation data is incomplete.';
+                    } else {
+                        $Lat1 = $user_arr[0];
+                        $Long1 = $user_arr[1];
+                        $Lat2 = $partner_arr[0];
+                        $Long2 = $partner_arr[1];
 
-                    if (isset($_POST['Lat1'])) {
+                        // Calculate distance
+                        $R = 6371;
+                        $Lat = $Lat2 - $Lat1;
+                        $Long = $Long2 - $Long1;
+                        $dLat1 = deg2rad($Lat);
+                        $dlong1 = deg2rad($Long);
+                        $a = sin($dLat1 / 2) * sin($dLat1 / 2) + cos(deg2rad($Lat1)) * cos(deg2rad($Lat2)) * sin($dlong1 / 2) * sin($dlong1 / 2);
+                        $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+                        $DistanceKM = $R * $c;
+                        $DistanceMeter = $DistanceKM * 1000;
+                        $DistanceKM = round($DistanceKM, 3);
 
-                    $Lat1 = $_POST['Lat1'];
-                    $Long1 = $_POST['Long1'];
-                    $Lat2 = $_POST['Lat2'];
-                    $Long2 = $_POST['Long2'];
+                        // Determine meal type based on distance and day of the week
+                        $weekday = date("w");
+                        if ($weekday == 0 || $weekday == 6) {
+                            if ($DistanceKM > 10) {
+                                $meal_type = "Cold";
+                                $message = "This Meal is available today";
+                            } else {
+                                $meal_type = "Hot";
+                                $message = "This Meal available only from Monday through Friday";
+                            }
+                        } else {
+                            if ($DistanceKM > 10) {
+                                $meal_type = "Cold";
+                                $message = "Support over weekend only";
+                            } else {
+                                $meal_type = "Hot";
+                                $message = "This Meal is available today";
+                            }
+                        }
                     }
-
-                    $R = 6371;
-
-                    $Lat = $Lat2 - $Lat1;
-                    $Long = $Long2 - $Long1;
-
-                    $dLat1 = deg2rad($Lat);
-                    $dlong1 = deg2rad($Long);
-
-                    $a =
-                    sin($dLat1 / 2) * sin($dLat1 / 2) +
-                    cos(deg2rad($Lat1)) * cos(deg2rad($Lat2)) *
-                    sin($dlong1 / 2) * sin($dlong1 / 2);
-
-                    $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
-
-                    $DistanceKM = $R * $c;
-
-                    $DistanceMeter = $DistanceKM * 1000;
-
-                    $DistanceKM = round($DistanceKM, 3);
-
-										$weekday=date("w");
-										//  echo $weekday."<br>";
-										if ($weekday == 0 ||$weekday == 6 ) {
-											if ($DistanceKM > 10) {
-												$meal_type = "Cold";
-												$message = "This Meal is available today";
-											}else{
-												// sat or sun and distance less than 10 km
-												$meal_type = "Hot";
-												$message = "This Meal available only from Monday through Friday";
-											}
-										}else{
-											if ($DistanceKM > 10) {
-												$meal_type = "Cold";
-												$message = "Support over weekend only";
-											}else{
-												$meal_type = "Hot";
-												$message = "This Meal is available today";
-											}
-										}
-
 										
-							 ?>
+	?>
 
 <div style="margin: 60px;">
 	<a href="javascript:history.go(-1)" style="text-decoration: underline; color:blue;" >Click here to cancel order and go back to menu</a>
@@ -168,24 +151,16 @@
 		
 	</div>
 	</div>
+@endsection
 
-	<!-- fh5co-blog-section -->
-	<script src="{{ asset('js/jquery.min.js') }}" defer></script>
-	<!-- jQuery Easing -->
-	<script src="{{ asset('js/jquery.easing.1.3.js') }}" defer></script>
-	<!-- Bootstrap -->
-	<script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
-	<!-- Waypoints -->
-	<script src="{{ asset('js/jquery.waypoints.min.js') }}" defer></script>
-	<script src="{{ asset('js/sticky.js') }}"></script>
-
-	<!-- Stellar -->
-	<script src="{{ asset('js/jquery.stellar.min.js') }}" defer></script>
-	<!-- Superfish -->
-	<script src="{{ asset('js/hoverIntent.js') }}" defer></script>
-	<script src="{{ asset('js/superfish.js') }}" defer></script>
-	
-	<!-- Main JS -->
-	<script src="{{ asset('js/main.js') }}" defer></script>
-
+@section('scripts')
+    <script src="{{ asset('js/jquery.min.js') }}" defer></script>
+    <script src="{{ asset('js/jquery.easing.1.3.js') }}" defer></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
+    <script src="{{ asset('js/jquery.waypoints.min.js') }}" defer></script>
+    <script src="{{ asset('js/sticky.js') }}"></script>
+    <script src="{{ asset('js/jquery.stellar.min.js') }}" defer></script>
+    <script src="{{ asset('js/hoverIntent.js') }}" defer></script>
+    <script src="{{ asset('js/superfish.js') }}" defer></script>
+    <script src="{{ asset('js/main.js') }}" defer></script>
 @endsection

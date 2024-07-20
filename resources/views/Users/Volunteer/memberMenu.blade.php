@@ -36,34 +36,34 @@
 </style>
 
 <body>
-	<div class="container tdy_menu">
-		{{-- menu row starts --}}
-		<h1 style="color:#003366; font-weight: bold; text-align: center;" class="animated">Today's Menus</h1>
-
-		<div class="row row-cols-1 row-cols-md-3 g-4 animate-box">
-			<div class="col">
+	<div class="">
+		{{-- menu item starts --}}
+		<div class="container menu_card">
+			{{-- menu row starts --}}
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+				<div class="col-md-8 col-md-offset-2 text-center animate-box">
+					<h1 style="margin-top: 50px; color:#003366; font-weight: bold;">Today's Menus</h1>
+				</div>
 				{{-- looping for each menu starts --}}
 				@foreach ($menuData as $menu)
-					
-				<div class="card h-100 shadow lg p-3 bg-white rounded">
-
-					<img src="{{ asset('uploads/meal/' . $menu->menu_image) }}" class="card-img-top" alt="menu image" width="100%" height="300px;">
-
-					<div class="card-body">
-						<h5 class="card-title">{{ $menu->menu_title }}</h5>
-						<p class="card-text">
-							{{ $menu->menu_description }}
-						</p>
+					<div class="col">
+						<div class="card h-100 shadow-lg p-3 bg-white rounded">
+							<img src="{{ asset('uploads/meal/' . $menu->menu_image) }}" class="card-img-top" alt="menu image" style="width: 100%; height: 300px; object-fit: cover;">
+		
+		
+							<div class="card-body">
+								<h5 class="card-title">{{ $menu->menu_title }}</h5>
+								<p class="card-text">{{ $menu->menu_description }}</p>
+							</div>
+						</div>
 					</div>
-				</div>
-					
-				</div>
-
 				@endforeach
 				{{-- looping for each menu ends --}}
 			</div>
+			{{-- menu row ends --}}
 		</div>
-		{{-- menu row ends --}}
+		
+		{{-- menu item ends --}}
 	</div>
 </body>
 		

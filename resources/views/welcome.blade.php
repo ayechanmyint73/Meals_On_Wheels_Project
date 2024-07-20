@@ -335,7 +335,10 @@
         
                     </div>
                 </div>
-                <!-- fh5co-blog-section -->  
+                <!-- fh5co-blog-section -->
+            </div>
+        </div>
+          
         
     </body>
 @endsection

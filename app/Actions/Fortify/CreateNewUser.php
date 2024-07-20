@@ -2,6 +2,7 @@
 
 namespace App\Actions\Fortify;
 
+use Illuminate\Http\Request;
 use App\Models\Member;
 use App\Models\Partner;
 use App\Models\User;
@@ -11,8 +12,10 @@ use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
 
+
 class CreateNewUser implements CreatesNewUsers
 {
+    
     use PasswordValidationRules;
 
     /**
@@ -50,17 +53,13 @@ class CreateNewUser implements CreatesNewUsers
 
         if ($input['role'] == 'member') {
             Validator::make($input, [
-                'member_caregiver_name' => ['required', 'string', 'max:255'],
-                'member_caregiver_relation' => ['required', 'string', 'max:255'],
-                'member_medical_condition' => ['required', 'string', 'max:255'],
-                'member_medical_number' => ['required', 'string', 'max:255'],
+                'service_eligibility' => ['required', 'string', 'max:255'],
+                'dietary' => ['required', 'string', 'max:255'],
             ])->validate();
             $member = new Member();
-            $member->member_caregiver_name = $input['member_caregiver_name'];
-            $member->member_caregiver_relation = $input['member_caregiver_relation'];
-            $member->member_medical_condition = $input['member_medical_condition'];
-            $member->member_medical_number = $input['member_medical_number'];
             $member->member_meal_duration = $input['member_meal_duration'];
+            $member->service_eligibility = $input['service_eligibility'];
+            $member->dietary = $input['dietary'];
             $member->user_id = $user->id;
             // $user->save();
             $member->save();

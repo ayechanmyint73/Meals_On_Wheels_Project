@@ -16,19 +16,19 @@
 *
 * ======================================================= */
 /* Base styles for the entire document */
-body {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    line-height: 1.6;
-    font-size: 16px;
-    background: #F5F5DC; /* Light Beige background */
-    color: #003366 ;
-    overflow-x: hidden;
-}
+    body {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 1.6;
+        font-size: 16px;
+        background: #F5F5DC; /* Light Beige background */
+        color: #003366 ;
+        overflow-x: hidden;
+    }
 
 /* Additional class for offcanvas body state */
 body.fh5co-offcanvas {
@@ -37,39 +37,39 @@ body.fh5co-offcanvas {
 
 /* Anchor tag styles */
 a {
-    color: #3d6359; /* Light Green */
+    color: black ; /* Light Green */
     transition: 0.5s ease;
     font-size: 20px; 
 }
 
 a:hover {
     text-decoration: none !important;
-    color: #132923 !important; /* Darker green on hover */
+    color: #003366  !important; /* Darker green on hover */
 }
 
 
 /* Paragraph, unordered list, and ordered list styles */
-p,
-ul,
-ol {
-    margin-bottom: 1.5em;
-    font-size: 16px;
-    color: #3d3c3c; /* Medium Gray */
-    font-family: "Poppins", sans-serif;
-}
+    p,
+    ul,
+    ol {
+        margin-bottom: 1.5em;
+        font-size: 16px;
+        color: #3d3c3c; /* Medium Gray */
+        font-family: "Poppins", sans-serif;
+    }
 
 /* Heading styles */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    margin: 0 0 30px 0;
-}
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        margin: 0 0 30px 0;
+    }
 
 /* Class for user management sections */
 .userManagement {
@@ -112,7 +112,7 @@ figure {
 /* Header top bar styles */
 .header-top {
     padding: 10px 0;
-    background: #679186; /* Light Green background */
+    background: #80C780 ; /* Light Green background */
 }
 .header-top .fh5co-link a {
     margin-left: 10px;
@@ -306,12 +306,12 @@ figure {
 }
 .sf-menu a:hover,
 .sf-menu a:focus {
-    color: #679186 !important;
+    color: black !important;
 }
 
 .sf-menu li.active a:hover,
 .sf-menu li.active a:focus {
-    color: #679186;
+    color: #003366;
 }
 
 .sf-menu li,
@@ -335,7 +335,7 @@ figure {
 .sf-menu ul li:hover a,
 .sf-menu ul li.sfHover a,
 .sf-menu li.active a {
-    color: #679186;
+    color: #003366;
 }
 
 .sf-menu ul li:hover,
@@ -425,11 +425,11 @@ fh5co-logo img{
     }
 }
 #fh5co-logo a {
-    color: #679186;
+    color: #80C780 ;
 }
 #fh5co-logo a:hover,
 #fh5co-logo a:focus {
-    color: #679186 !important;
+    color: #80C780  !important;
 }
 
 #fh5co-menu-wrap {
@@ -444,7 +444,7 @@ fh5co-logo img{
 }
 
 #fh5co-primary-menu > li > ul li.active > a {
-    color: #679186 !important;
+    color: #80C780  !important;
 }
 #fh5co-primary-menu > li > .sf-with-ul:after {
     border: none !important;
@@ -1203,61 +1203,66 @@ fh5co-logo img{
     color: #5a5a5a;
 }
 
-#footer {
-    background: #679186;
-    padding: 60px 0 40px;
-}
-#footer p {
-    color: white;
-    font-size: 14px;
-}
-#footer p a {
-    color: rgba(255, 255, 255, 0.5);
-}
-#footer p a:hover,
-#footer p a:active,
-#footer p a:focus {
-    color: rgba(255, 255, 255, 0.9) !important;
-}
+    /* footer session */
+    #footer {
+        background: #679186;
+        padding: 60px 0 40px;
+    }
+    #footer p {
+        color: white;
+        font-size: 14px;
+    }
+    #footer p a {
+        color: rgba(255, 255, 255, 0.5);
+    }
+    #footer p a:hover,
+    #footer p a:active,
+    #footer p a:focus {
+        color: rgba(255, 255, 255, 0.9) !important;
+    }
+    /* footer session */
 
-.btn {
-    -webkit-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
-}
 
-.btn {
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    -webkit-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
-}
-.btn.btn-primary {
-    background: #679186;
-    color: #fff;
-    border: none !important;
-    border: 2px solid transparent !important;
-}
-.btn.btn-primary:hover,
-.btn.btn-primary:active,
-.btn.btn-primary:focus {
-    box-shadow: none;
-    background: #679186;
-    color: #fff !important;
-}
-.btn:hover,
-.btn:active,
-.btn:focus {
-    background: #393e46 !important;
-    color: #fff;
-    outline: none !important;
-}
-.btn.btn-default:hover,
-.btn.btn-default:focus,
-.btn.btn-default:active {
-    border-color: transparent;
-}
+    /* button session */
+    .btn {
+        -webkit-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s;
+    }
+
+    .btn {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        -webkit-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s;
+    }
+    .btn.btn-primary {
+        background: #80C780 ;
+        color: #fff;
+        border: none !important;
+        border: 2px solid transparent !important;
+    }
+    .btn.btn-primary:hover,
+    .btn.btn-primary:active,
+    .btn.btn-primary:focus {
+        box-shadow: none;
+        background: #2F4B26 ;
+        color: #fff !important;
+    }
+    .btn:hover,
+    .btn:active,
+    .btn:focus {
+        background: #2F4B26  !important;
+        color: #fff;
+        outline: none !important;
+    }
+    .btn.btn-default:hover,
+    .btn.btn-default:focus,
+    .btn.btn-default:active {
+        border-color: transparent;
+    }
+    /* button session */
 
 .js .animate-box {
     opacity: 0;

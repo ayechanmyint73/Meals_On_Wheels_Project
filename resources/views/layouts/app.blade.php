@@ -22,10 +22,10 @@
   <!-- Custom CSS -->
   <style>
   /* Navigation link styles */
+  
   .sf-menu li a {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
-    color: #3d6359; /* Light Green */
     text-transform: uppercase; /* Convert text to uppercase */
     position: relative;
     display: inline-block;
@@ -40,13 +40,9 @@
 
   /* Register button styles */
   .register-button {
-    font-size: 20px;
+    margin-right: 15px;
     font-weight: bold;
-    color: #ffffff; /* White text */
-    background-color: #3d6359; /* Light Green */
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
     transition: background-color 0.3s ease;
     text-decoration: none !important; /* Remove underline */
     text-transform: uppercase; /* Convert text to uppercase */
@@ -54,7 +50,7 @@
   }
 
   .register-button:hover {
-    background-color: #132923; /* Darker green on hover */
+    background-color: #2F4B26 ; /* Darker green on hover */
     text-decoration: none !important; /* Ensure no underline on hover */
   }
 </style>
@@ -80,20 +76,25 @@
             @else
               <ul class="sf-menu" id="fh5co-primary-menu">
                 <li class="active"><a href="/">Home</a></li>
-                <li><a href="{{ route('register') }}">Get Meal</a></li>
+                <li><a href="/donationFee">Donate</a></li>
                 <li>
                   <a href="{{ route('register') }}" class="fh5co-sub-ddown">Support Us</a>
                   <ul class="fh5co-sub-menu">
-                    <li><a href="/donationFee">Donate</a></li>
+                    <li><a href="{{ route('register') }}">Be a member</a></li>
                     <li><a href="{{ route('register') }}">Volunteer</a></li>
                     <li><a href="{{ route('register') }}">Partner</a></li>
                   </ul>
                 </li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/contact">Contact</a></li>
+                <li>
+                  <a href="{{ route('login') }}" class="btn btn-primary" style="margin-right: 15px;">Login</a>
+                </li>
+
+
                  @if (Route::has('register'))
                     <li>
-                        <a href="{{ route('register') }}" class="btn btn-primary register-button ml-4">Register</a>
+                        <a href="{{ route('register') }}" class="btn btn-primary  ">Register</a>
                     </li>
                 @endif
 

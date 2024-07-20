@@ -11,12 +11,11 @@ class Member extends Model
 
     protected $fillable = [
         'user_id',
-        'member_caregiver_name',
-        'member_caregiver_relation',
-        'member_medical_condition',
-        'member_medical_number',
         'member_meal_type',
         'member_meal_duration',
+        'member_extends_reason',
+        'service_eligibility',
+        'dietary',
     ];
 
     public function users()
