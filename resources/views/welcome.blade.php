@@ -93,7 +93,7 @@
                                 <div class="feature-copy">
                                     <h2>Donation</h2>
                                     <p>Support our cause with your generosity. Every donation helps us make a difference.</p>
-                                    <a href="#" class="btn btn-primary">Donate</a>
+                                    <a href="/donationFee" class="btn btn-primary">Donate</a>
                                 </div>
                             </div>
                         </div>
