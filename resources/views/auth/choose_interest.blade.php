@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="text-center mb-4">
-        <h2>Select Your Interest</h2>
+        <h1 style="text-align: center; color:#003366; font-weight: bold; margin: 25px 0;">Select Your Interest</h1>
     </div>
     <div class="row justify-content-center">
         <!-- Member Box -->

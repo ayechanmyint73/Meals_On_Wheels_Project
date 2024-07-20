@@ -78,7 +78,7 @@
                 <li class="active"><a href="/">Home</a></li>
                 <li><a href="/donationFee">Donate</a></li>
                 <li>
-                  <a href="{{ route('choose.interest') }}" class="fh5co-sub-ddown">Support Us</a>
+                  <a href="{{ route('choose.interest') }}" class="fh5co-sub-ddown">Get Involved</a>
                   <ul class="fh5co-sub-menu">
                     <li><a href="{{ route('choose.interest') }}">Be a member</a></li>
                     <li><a href="{{ route('choose.interest') }}">Volunteer</a></li>

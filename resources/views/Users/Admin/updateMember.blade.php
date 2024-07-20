@@ -5,81 +5,137 @@
 @extends('Users.Admin.layouts.app')
 
 @section('content')
+
+<style>
+    input[type=text] , input[type=number] {
+      width: 100%;
+      padding: 12px 20px;
+      /* margin: 8px 0; */
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .btns{
+        margin: 20px 0;
+    }
+</style>
 		
-		<div id="fh5co-services-section">
-            @if (Session::has('dataInform'))
-                <h4 class="alert alert-warning animate-box text-center" role="alert">
-                    {{ Session::get('dataInform') }}
-                </h4>
-            @endif
-			<div class="container">
-				<div class="row display-flex justify-content">
-					<div class="col-md-6 col-sm-6 col-md-offset-3">
-						<div class=" animate-box">
-							<div class="col-md-12 ">
-                                <h3>General Information</h3>
-                                <form action="{{ route('admin#userUpdated', $userData->id) }}" method="POST">
-                                    @csrf
-                                    <label class="userManagement">Name</label><br>
-                                    <input name="name" class="input-md col-md-12" type="text" required="required" value="{{ old('name', $userData->name) }}"/>
+<body>
+    <div class="container">
+        <h1 class="text-center" style="text-align: center; color:#003366; font-weight: bold; padding: 25px 0;">Profile Settings</h1>
 
-                                    {{-- <label class="userManagement">Gender</label><br> --}}
-                                    <input name='gender' class="input-md col-md-12" type="hidden" required="required" value="{{ old('gender', $userData->gender) }}"/><br><br>
+        <div class="row" style="margin: 20px 0;">
+            <div class="col-sm-4">
+                <img src="/images/profile_pic.svg" alt="profile image" class="img-fluid img-thumbnail">
+            </div>
+            <div class="col-sm-8" style=" color:#003366; justify-content: center; align-items: center;">
+                <h3 style="text-transform: capitalize; color:#003366; font-weight: bold;">{{ $userData->name }}</h3>
+                <h4>{{ $userData->email }} <span> </span></h4>
+            </div>
+        </div>
 
-                                    <label class="userManagement">Age</label><br>
-                                    <input name="age" required="required" class="input-md col-md-12" type="text" value="{{ old('age', $userData->age) }}"/><br><br>
+        <div>
+            <h2 style="margin-bottom: 0; color:#003366;">Account</h2><hr>
+            <div class="">
+                @if (Session::has('dataInform'))
+                    <h4 class="alert alert-success animate-box text-center" role="alert">
+                        {{ Session::get('dataInform') }}
+                    </h4>
+                @endif
 
-                                    <label class="userManagement">Contact</label><br>
-                                    <input name='phone' required="required" class="input-md col-md-12" type="text" value="{{ old('phone', $userData->phone) }}"/><br><br>
+                <div class="">
+                    <form action="{{ route('admin#userUpdated', $userData->id) }}" method="POST">
+                        @csrf
+                        <div class="row mb-4">
+                            <label for="name" class="col-md-2 col-form-label userManagement">Name</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="name"  value="{{ old('name', $userData->name) }}" required>
+                            </div>
+                        </div>
 
-                                    <label class="userManagement">Address</label><br>
-                                    <input name="address" required="required" class="input-md col-md-12" type="text" value="{{ old('address', $userData->address) }}"/><br><br>
+                        <input name='gender' class="input-md " type="hidden" value="{{ old('gender', $userData->gender) }}"/>
 
-									<label class="userManagement">Email</label><br>
-                                    <input name='email' required="required" class="input-md col-md-12" type="text" value="{{ old('email', $userData->email) }}"/><br><br>
+                        <div class="row mb-4">
+                            <label for="age" class="col-md-2 col-form-label userManagement">Age</label>
+                            <div class="col-md-10">
+                                <input type="number" class="form-control" name="age" value="{{ old('age', $userData->age) }}" required>
+                            </div>
+                        </div>
 
-                                    <div class="text-center"> 
-                                        <button class="btn-primary">Update</button> &nbsp;
-                                        <a href="{{ route('admin#allMembers') }}">Cancel</a>
-                                    </div>
-                                </form>
-							</div>
-						</div>
-						<div class=" animate-box">
-							<div class="col-md-12 ">
-                                <h3 class="mt-5 pt-5">Member Details</h3>
-                                <form action="{{ route('admin#memberUpdated', $userData->id) }}" method="POST">
-                                    @csrf
-                                    <label class="userManagement">Care Giver's Name</label><br>
-                                    <input name="member_caregiver_name" required="required" class="input-md col-md-12" type="text" value="{{ old('member_caregiver_name', $memberData->member_caregiver_name) }}"/><br><br>
+                        <div class="row mb-4">
+                            <label for="email" class="col-md-2 col-form-label userManagement">Email</label>
+                            <div class="col-md-10">
+                                <input type="email" class="form-control" name="email"  value="{{ old('email', $userData->email) }}" required>
+                            </div>
+                        </div>
 
-									<label class="userManagement">Care Giver's Relationship</label><br>
-                                    <input name="member_caregiver_relation" class="input-md col-md-12" type="text" required="required" value="{{ old('member_caregiver_relation', $memberData->member_caregiver_relation) }}"/><br><br>
+                        <div class="row mb-4">
+                            <label for="phone" class="col-md-2 col-form-label userManagement">Contact</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="phone" value="{{ old('phone', $userData->phone) }}" required>
+                            </div>
+                        </div>
 
-                                    <label class="userManagement">Member Medical Condition</label><br>
-                                    <input name="member_medical_condition" class="input-md col-md-12" type="text" required="required" value="{{ old('member_medical_condition', $memberData->member_medical_condition) }}"/><br><br>
+                        <div class="row mb-4">
+                            <label for="address" class="col-md-2 col-form-label userManagement">Address</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="address" value="{{ old('address', $userData->address) }}" required>
+                            </div>
+                        </div>            
+                        
+                        <div class="text-center btns"> 
+                            <button class="btn btn-primary">Update</button> &nbsp;
+                            <button class="btn btn-danger"><a href="#" style="font-size: 15px;">Cancel</a></button>
+                        </div>
+            
+                    </form>
+            
+                    <form action="{{ route('admin#memberUpdated', $userData->id) }}" method="POST">
+                        @csrf
+                        <h3>Specific Requirements</h3>
+                        <div class="row mb-4">
+                            <label for="service_eligibility" class="col-md-2 col-form-label userManagement">Service Eligibility</label>
+                            <div class="col-md-10">
+                                <select class="form-control" name="service_eligibility" required>
+                                    <option value="Age" {{ old('service_eligibility', $memberData->service_eligibility) == 'Age' ? 'selected' : '' }}>Age</option>
+                                    <option value="Disease" {{ old('service_eligibility', $memberData->service_eligibility) == 'Disease' ? 'selected' : '' }}>Disease</option>
+                                    <option value="Disability" {{ old('service_eligibility', $memberData->service_eligibility) == 'Disability' ? 'selected' : '' }}>Disability</option>
+                                </select>
+                            </div>
+                        </div>   
 
-                                    <label class="userManagement">Member Medical Number</label><br>
-                                    <input name="member_medical_number" class="input-md col-md-12" type="text" required="required" value="{{ old('member_medical_number', $memberData->member_medical_number) }}"/>
+                        <div class="row mb-4">
+                            <label for="dietary" class="col-md-2 col-form-label userManagement">Dietary requirements</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="dietary" value="{{ old('dietary', $memberData->dietary) }}" required>
+                            </div>
+                        </div>
 
-									{{-- <label class="userManagement">Member Meal Type</label><br> --}}
-                                    <input name="member_meal_type" class="input-md col-md-12" type="hidden" required="required" value="{{ old('member_meal_type', $memberData->member_meal_type) }}"/><br><br>
+                        <input name="member_meal_type" class="input-md " type="hidden" value="{{ old('member_meal_type', $memberData->member_meal_type) }}"/>
 
-                                    <label class="userManagement">Duration</label><br>
-                                    <input name="member_meal_duration" required="required" class="input-md col-md-12" type="number" value="{{ old('member_meal_duration', $memberData->member_meal_duration) }}"/><br><br>
+                        <div class="row mb-4">
+                            <label for="member_meal_duration" class="col-md-2 col-form-label userManagement">Meal Duration (Read Only)</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="member_meal_duration" readonly="readonly" value="{{ old('member_meal_duration', $memberData->member_meal_duration) }}" required>
+                            </div>
+                        </div>   
+            
+                        <div class="text-center btns"> 
+                            <button class="btn btn-primary">Update</button> &nbsp;
+                            <button class="btn btn-danger"><a href="#" style="font-size: 15px;">Cancel</a></button>
+                        </div>
+                    </form>
+            
+            
+                </div>
+            
+            
+            </div>
+        </div>
+    </div>
+</body>
 
-                                    <div class="text-center"> 
-                                        <button class="btn-primary">Update</button> &nbsp;
-                                        <a href="{{ route('admin#allMembers') }}">Cancel</a>
-                                    </div>
-                                </form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- END What we do -->
 
 @endsection

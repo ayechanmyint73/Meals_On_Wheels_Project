@@ -34,12 +34,12 @@
 </style>
 
 <body>
-    <div class="container-fluid">
+    <div class="container">
         <div class="row" style="display: flex;">
             <div class="col" id="form">
                 <x-jet-validation-errors class="mb-4 alert alert-danger" role="alert"/>
 
-                <h2>Registration Form</h2>
+                <h1 class="text-center" style="text-align: center; color:#003366; font-weight: bold; margin:25px 0;">Registration Form</h1>
 
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
@@ -108,18 +108,20 @@
                     <div class="row mb-4">
                         <label for="location" class="col-sm-4 col-form-label">Geo Location</label>
                         <div class="col-sm-8">
-                            <input type="text" name="geolocation" id="location" />
-                            <input type="button" value="Get Location" onclick="getlocation()" class="btn btn-primary ms-2">
-                            <script>
-                                function getlocation() {
-                                    navigator.geolocation.getCurrentPosition(showLoc);
-                                }
-                                function showLoc(pos) {
-                                    var lat = pos.coords.latitude;
-                                    var log = pos.coords.longitude;
-                                    document.getElementById("location").value = lat + "," + log;
-                                }
-                            </script>
+                            <div style="display:flex; align-items: center;">
+                                <input type="text" class="form-control" name="geolocation" id="location" />
+                                <input type="button" value="Get Location" onclick="getlocation()" class="btn btn-primary">
+                                <script>
+                                    function getlocation() {
+                                        navigator.geolocation.getCurrentPosition(showLoc);
+                                    }
+                                    function showLoc(pos) {
+                                        var lat = pos.coords.latitude;
+                                        var log = pos.coords.longitude;
+                                        document.getElementById("location").value = lat + "," + log;
+                                    }
+                                </script>
+                            </div>
                         </div>
                     </div>
 
@@ -230,14 +232,14 @@
                     <!-- Submit and Reset buttons -->
                     <div class="row mb-4">
                         <div class="col-md-8 offset-md-4">
-                            <button type="submit" class="btn btn-outline-primary">Register</button>
-                            <button type="reset" class="btn btn-outline-danger ms-2">Clear</button>
+                            <button type="submit" class="btn btn-primary">Register</button>
+                            <button type="reset" class="btn btn-danger ">Clear</button>
                         </div>
                     </div>
                 </form>
 
                 <br>
-                <h4>Already have an account? <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Login here.</a></h4>        
+                <p>Already have an account? <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500" style="text-decoration: underline;">Login here.</a></p>        
             </div>
         </div>
     </div>

@@ -21,7 +21,6 @@
 
     input[type=submit] {
       width: 100%;
-      background-color: #2F4B26  ;
       color: white;
       padding: 14px 20px;
       margin: 8px 0;
@@ -35,7 +34,7 @@
     }
 
     li a{
-      color: #80C780 ;
+      color:  ;
     }
 
     a:hover{
@@ -91,7 +90,7 @@
               <label for="">Message</label>
               <textarea placeholder="Your message..."></textarea>
 
-              <input type="submit" value="Submit">
+              <input type="submit" value="Submit" class="btn btn-primary">
             </form>
           </div>
           {{-- contact form ends --}}
