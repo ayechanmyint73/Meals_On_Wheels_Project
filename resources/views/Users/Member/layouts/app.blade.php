@@ -164,20 +164,18 @@ flex-direction: column;">
 
 <!-- End Content -->
 
-<footer style="margin-top: auto;">
-    <div id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3 text-center">
-                    <p class="fh5co-social-icons">
-                        <a href="#"><i class="icon-twitter2"></i></a>
-                        <a href="#"><i class="icon-facebook2"></i></a>
-                        <a href="#"><i class="icon-instagram"></i></a>
-                        <a href="#"><i class="icon-dribbble2"></i></a>
-                        <a href="#"><i class="icon-youtube"></i></a>
-                    </p>
-                    <p>Copyright 2022 MerryMeal ~ Meals on Wheels <a href="#">Charity</a>. All Rights Reserved. <br>Made with <i class="icon-heart3"></i> by <a href="http://freehtml5.co/" target="_blank">Group 1 DEA Team</a> / Demo Images: <a href="https://unsplash.com/" target="_blank">Unsplash</a></p>
-                </div>
+<footer class="bg-light py-5 mt-auto">
+    <div class="container">
+        <!-- Copyright and Legal Links -->
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="text-muted mb-0">&copy; 2024 MerryMeal ~ Meals on Wheels Charity. All Rights Reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item"><a href="/terms" class="text-muted">Privacy Policy</a></li>
+                    <li class="list-inline-item"><a href="/terms" class="text-muted">Terms of Use</a></li>
+                </ul>
             </div>
         </div>
     </div>
