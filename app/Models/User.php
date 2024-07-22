@@ -31,7 +31,8 @@ class User extends Authenticatable
         'address',
         'geolocation',
         'email',
-        'password'
+        'password',
+        'role',
     ];
 
     /**
