@@ -303,6 +303,24 @@ class AdminController extends Controller
         return $arr;
     }
 
-   
+    public function reviewReassessment(Request $request, $id)
+    {
+        $member = Member::findOrFail($id);
+        $member->reassessment_status = $request->decision;
+    
+        if ($request->decision === 'approved') {
+            $member->member_meal_duration += 30; // Add 30 days to the meal duration
+            $message = 'Reassessment approved. 30 days added to meal duration.';
+        } else {
+            $message = 'Reassessment rejected.';
+        }
+    
+        // Clear the extend reason after processing
+        $member->member_extends_reason = null;
+    
+        $member->save();
+    
+        return redirect()->back()->with('dataInform', $message);
+    }
 
 }

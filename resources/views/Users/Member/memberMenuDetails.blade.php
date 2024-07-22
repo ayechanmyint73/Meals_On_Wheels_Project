@@ -189,66 +189,7 @@
 	
 	{{-- menu details page ends --}}
 
-    {{-- <div id="">
-        {{-- title starts --}}
-        {{-- <div class="row">
-            <div class="col-md-8 col-md-offset-2 text-center animate-box">
-                <h1 style="margin-top: 50px; color:#003366; font-weight: bold; text-transform:capitalize;">{{ $viewMenu->menu_title }} - Menu Details </h1>
-            </div>
-        </div> --}}
-        {{-- title ends --}}
-        
-            
-        {{-- <div class="container">
-            <div class="row row-bottom-padded-md">
-                <div class="container">
-                    <div class="row">
-                        <div class="jumbotron animate-box">
-                            <div class="form-floating mb-3" style="padding-bottom: 50px">
-                                @if ($viewMenu->menu_image)
-                                    <img src="{{ asset('uploads/meal/'. $viewMenu->menu_image) }}" class="img-thumbnail" alt="category image ">
-                                    <br>
-                                @endif
-                            </div>
-                            <div class="feature-text animate-box">
-                                <h1>{{ $viewMenu->menu_title }}</h1>
-                                <p>{{ $viewMenu->menu_description }}</p>
-                            </div>
-                            <div class="feature-text animate-box">
-                                <h3>Time Availability</h3>
-                                <p><?php echo $message; ?></p>
-                            </div>
-                            <div class="feature-text animate-box">
-                                <h3>Meal Type</h3>
-                                <p><?php echo $meal_type; ?></p>
-                            </div>
-                            
-                            <div class="col">
-                                <div class="form-group animate-box">
-                                    <a href="{{ route('member#foodSafety') }}"> <input type="submit" value="Food Safety" class="btn btn-primary"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                                    
-                                    @if( $memberData->member_meal_duration != 0 )
-                                    @if($message == "This Meal is available today")
-                                    <div class="row animate-box">
-                                        <div class="col-sm-1">
-                                            <div class="form-group animate-box">
-                                                <a href="{{ route('member#orderConfirmation', [ 'partner_id' => $viewMenu -> partner_id, 'menu_id' => $viewMenu-> id, 'user_id' => Auth()->user()->id]) }}"> <input type="submit" value="Order" class="btn btn-primary"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endif
-                                    @endif
-            
-            </div>
-            
-        </div> --}}
-    {{-- </div> --}}
+
 </body>
     
 
