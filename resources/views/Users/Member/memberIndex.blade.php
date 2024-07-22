@@ -14,7 +14,7 @@
             </div>
         @endif
     
-        @if($memberData->member_meal_duration == 0)
+        @if(($memberData->member_meal_duration ?? 0)== 0)
         <div class="alert alert-warning animate-box" role="alert">
             Please Undergo Reassesment to continue with your 30 days meal plan<a href="{{ route('member#reassesment', Auth()->user()->id) }}"> Click here to apply for reassesment</a>
         </div>

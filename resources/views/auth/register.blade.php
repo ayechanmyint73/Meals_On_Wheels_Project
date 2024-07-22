@@ -92,6 +92,13 @@
                     </div>
 
                     <div class="row mb-4">
+                        <label for="password_confirmation" class="col-sm-4 col-form-label">Confirm Password</label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" required="true">
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
                         <label for="phone" class="col-sm-4 col-form-label">Phone number</label>
                         <div class="col-sm-8">
                             <input type="tel" class="form-control" maxlength="11" required="true" name="phone" id="phone">

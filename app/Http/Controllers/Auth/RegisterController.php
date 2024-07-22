@@ -42,7 +42,7 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-     /**
+    /**
      * Show the registration form with selected interest.
      *
      * @param  Request  $request
@@ -54,17 +54,6 @@ class RegisterController extends Controller
         
         // Pass the interest to the registration view
         return view('auth.register', ['interest' => $interest]);
-    }
-
-    public function register(Request $request)
-    {
-        $this->validator($request->all())->validate();
-
-        $user = $this->create($request->all());
-
-        $this->guard()->login($user);
-
-        return redirect($this->redirectPath());
     }
 
     /**
@@ -79,6 +68,12 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'gender' => ['required', 'string'],
+            'age' => ['required', 'integer', 'min:0'], 
+            'phone' => ['required', 'string', 'max:15'], 
+            'address' => ['required', 'string', 'max:255'],
+            'geolocation' => ['required', 'string', 'max:255'],
+            'role' => ['required', 'string', 'in:member,partner,volunteer'], 
         ]);
     }
 
@@ -94,6 +89,13 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'gender' => $data['gender'],
+            'age' => $data['age'],
+            'phone' => $data['phone'],
+            'address' => $data['address'],
+            'geolocation' => $data['geolocation'],
+            'role' => $data['role'],
         ]);
     }
 }
+
