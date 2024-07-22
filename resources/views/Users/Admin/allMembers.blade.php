@@ -70,7 +70,6 @@
                             <p class="text-muted">Age - {{ DB::table('users')->where('id',$member->user_id)->value('age')}} <span>| </span> <span class="text-pink">{{ DB::table('users')->where('id',$member->user_id)->value('email')}}</span></p>
                             <p>Address - {{ DB::table('users')->where('id',$member->user_id)->value('address')}}</p>
                             <p>Duration - {{ $member->member_meal_duration }} days</p>
-                            <p>Extend Reasons - {{ $member->member_extends_reason }}</p>
                         </div>
                         
                         <a href="{{ route('admin#updateMembers', $member->user_id) }}" class="btn btn-primary">
@@ -79,7 +78,7 @@
                         <a href="{{ route('admin#deleteMember', $member->user_id) }}" class="btn btn-danger">
                             <i class="icon-trash"></i> Delete Info
                         </a>
-						
+
                         @if($member->member_extends_reason)
 							<div class="reassessment-form">
 								<h5>Reassessment Request</h5>
