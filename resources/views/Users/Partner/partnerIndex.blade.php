@@ -1,229 +1,285 @@
+@extends('Users.Partner.layouts.app')
+
 @section('title')
     Menu Management
 @endsection
 
-@extends('Users.Partner.layouts.app')
-
-@section('content')	
-<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-<link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
-
-<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'> -->
-
-<!-- Animate.css -->
-<link rel="stylesheet" href="{{ asset('css/animate.css') }}">
-<!-- Icomoon Icon Fonts-->
-<link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
-<!-- Bootstrap  -->
-<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-<!-- Superfish -->
-<link rel="stylesheet" href="{{ asset('css/superfish.css') }}">
-
-<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+@section('content')
 
 <style>
-    .cover{
+    /* Updated CSS from the member page */
+    .fh5co-page {
         width: 100%;
         height: auto;
     }
-    
-    .cover-img{
-        width: 100%;
-        min-height: 700px;
+
+    .fh5co-hero {
         position: relative;
-        display: flex;
-        align-items: center; 
-        justify-content: center;
+        height: 100vh;
     }
 
-    .cover-img img{
+    .fh5co-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
-        position: absolute;
-        z-index: -1;
+        background: rgba(0, 0, 0, 0.5);
     }
 
-    .cover-btn{
-        padding: 15px;
-        width: 200px;
-        font-size: 16px;
-        border-radius: 50px;
-        border: none;
+    .fh5co-cover {
+        display: flex;
         align-items: center;
         justify-content: center;
-        margin: 10px;
-        background-color: #2F4B26;
+        background-size: cover;
+        background-position: center;
         color: white;
+        text-align: center;
+        min-height: 700px;
     }
 
-    .cover-btn:hover{
-        box-shadow: 10px 20px 30px rgba(89, 89, 89, 0.3);
-        cursor: pointer;
-    }
-
-    .add_btn{
-        background-color:  #2F4B26;
-        color: white;
-        padding: 10px 25px;
+    .fh5co-cover .desc {
+        padding: 20px;
         border-radius: 10px;
     }
 
-    .add_btn:hover{
-        opacity: 0.7;
-        color: black;
+    .fh5co-cover h2 {
+        font-size: 2em;
+        margin-bottom: 15px;
     }
 
-    .cover_img{
-        padding: 0;
-        margin: 0;
-    }
-
-    .main_btn{
+    .fh5co-cover .btn {
         background-color: #2F4B26;
         color: white;
+        padding: 10px 25px;
+        border-radius: 5px;
+        text-decoration: none;
     }
 
-    .main_btn:hover{
+    .fh5co-cover .btn:hover {
+        background-color: #2c3e50;
+    }
+
+    .card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .card-img-top {
+        object-fit: cover;
+        height: 150px; /* Reduced height */
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .card-text {
+        margin-bottom: 15px;
+    }
+
+    .note {
+        margin-top: 50px;
+        color: #003366;
+        font-weight: bold;
+        text-transform: capitalize;
+    }
+
+    .alert {
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+    }
+
+    .alert-danger {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+
+    .container-fluid {
+        padding: 0;
+    }
+
+    .add_btn {
+        background-color: #2F4B26;
+        color: white;
+        padding: 10px 25px;
+        border-radius: 10px;
+        text-decoration: none;
+    }
+
+    .add_btn:hover {
+        opacity: 0.8;
         cursor: pointer;
     }
 
-    .view_btn{
+    .view_btn {
         background-color: #2F4B26;
         color: white;
+        padding: 10px 25px;
+        border-radius: 10px;
+        text-decoration: none;
     }
-    .tdy_menu{
-        padding-bottom: 30px;
+
+    .view_btn:hover {
+        opacity: 0.8;
+        cursor: pointer;
+    }
+
+    .main_btn {
+        background-color: #2F4B26; /* Default for buttons */
+        color: white;
+        padding: 10px 25px;
+        border-radius: 10px;
+        text-decoration: none;
+    }
+
+    .main_btn:hover {
+        opacity: 0.8;
+        cursor: pointer;
+    }
+
+    .update_btn {
+        background-color: #90EE90; /* Light Green */
+        color: white;
+    }
+
+    .delete_btn {
+        background-color: #FF6347; /* Red */
+        color: white;
+    }
+
+    .calendar {
+        margin-bottom: 20px;
+    }
+
+    .quote {
+        border: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    .quote-header {
+        font-size: 1.5em;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .quote-body {
+        text-align: center;
+        font-style: italic;
     }
 </style>
 
+<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css' rel='stylesheet' />
+
 <body>
-    <div class="container-fluid cover_img">
-        <div class="cover-img">
-            <img src="images/partner_cover_img.webp" class="img-fluid" alt="cover image">
-            <button class="cover-btn animate-box"><a href="#" style="color: white; font-size: 18px;">Manage Information</a></button>
+    <div id="fh5co-page">
+        <div class="fh5co-hero">
+            <div class="fh5co-overlay"></div>
+            <div class="fh5co-cover text-center" data-stellar-background-ratio="0.5" style="background-image: url('{{ asset('images/partner_cover_img.webp') }}');">
+                <div class="desc animate-box">
+                    <h2><strong>Welcome to your Dashboard, {{ Auth()->user()->name }}</strong></h2>
+                    <span><a class="btn btn-primary btn-lg" href="">View Menu</a></span>
+                </div>
+            </div>
         </div>
     </div>
-
-
-    <div class="container tdy_menu">
+    <br>
+    <div class="container">
         <div class="row">
-            <div class="col-sm-10">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h3 style="margin-top: 50px; color:#003366; font-weight: bold; text-transform:capitalize;">Today's Menu</h3>
-                    <a href="{{ route('partner#createMenu') }}" class="border add_btn ">Add New Menu</a>
-                </div>  
-                
-                @if (Session::has('menuCreated'))
-					<div class="alert alert-success animate-box" role="alert">
-						{{ Session::get('menuCreated') }}
-					</div>
-				@endif
-				@if (Session::has('menuDeleted'))
-					<div class="alert alert-danger animate-box" role="alert">
-						{{ Session::get('menuDeleted') }}
-					</div>
-				@endif
-				@if (Session::has('updateData'))
-                    <div class="alert alert-success animate-box" role="alert">
-                        {{ Session::get('updateData') }}
-                    </div>
-                @endif
-                
-                @foreach ($menuData as $menu)
-                    <div class="card mb-3 shadow lg p-3 bg-white rounded animate-box">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img class="img-fluid" src="{{ asset('uploads/meal/' . $menu->menu_image) }}" alt="menu images">
-                            </div>
-                            <div class="col-md-8 ">
-                                <div class="card-body">
-                                    <h3 class="card-title" style="text-transform: capitalize;">{{ $menu->menu_title }}</h3>
-                                    <p class="card-text">{{ $menu->menu_description }}</p>
-
-                                    @if ( Auth::user() -> role == 'partner')
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <a href="{{ route('partner#viewMenu', $menu->id) }}" class="border p-2 view_btn">View Menu</a>
-                                        <a href="{{ route('partner#updateMenu', $menu->id) }}" class="border btn-success p-2">Update Menu</a>
-                                        <a href="{{ route('partner#deleteMenu', $menu->id) }}" class="border btn-danger p-2">Delete Menu</a>
-                                    </div>
-                                    @endif
+            <div class="col-md-8 animate-box">
+                <div class="card feature-center">
+                    <div class="feature-copy">
+                        <h2>Today's Menu</h2>
+                        <div class="menu-container">
+                            @if (Session::has('menuCreated'))
+                                <div class="alert alert-success animate-box" role="alert">
+                                    {{ Session::get('menuCreated') }}
                                 </div>
-                            </div>
+                            @endif
+                            @if (Session::has('menuDeleted'))
+                                <div class="alert alert-danger animate-box" role="alert">
+                                    {{ Session::get('menuDeleted') }}
+                                </div>
+                            @endif
+                            @if (Session::has('updateData'))
+                                <div class="alert alert-success animate-box" role="alert">
+                                    {{ Session::get('updateData') }}
+                                </div>
+                            @endif
+
+                            @foreach ($menuData as $menu)
+                                <div class="menu-item">
+                                    <div class="card shadow-lg p-3 bg-white rounded">
+                                        <img src="{{ asset('uploads/meal/' . $menu->menu_image) }}" class="card-img-top" alt="menu image">
+
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ $menu->menu_title }}</h5>
+                                            <p class="card-text">{{ $menu->menu_description }}</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <a href="{{ route('partner#viewMenu', $menu->id) }}" class="main_btn view_btn">View Menu</a>
+                                                    <a href="{{ route('partner#updateMenu', $menu->id) }}" class="main_btn update_btn">Update Menu</a>
+                                                    <a href="{{ route('partner#deleteMenu', $menu->id) }}" class="main_btn delete_btn">Delete Menu</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
-                @endforeach
-
+                </div>
             </div>
-
-            <div class="col-sm-2  animate-box">
-                <h3 style="margin-top: 50px; color:#003366; font-weight: bold; text-transform:capitalize;">Note</h3>
-				<textarea class="form-control shadow lg p-3 rounded" id="" cols="30" rows="20" placeholder="Your message..." required></textarea>
+            <div class="col-md-4 animate-box">
+                <div class="card calendar">
+                    <div class="card-header">Calendar</div>
+                    <div id="calendar"></div>
+                </div>
+                <div class="quote">
+                    <div class="quote-header">Quote of the Day</div>
+                    <div class="quote-body">"I love food deliveries because it's like having a personal chef, except I never have to see their judgmental eyes when I order my third pizza of the week." - Admin</div>
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/jquery.min.js') }}" defer></script>
+    <script src="{{ asset('js/jquery.easing.1.3.js') }}" defer></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
+    <script src="{{ asset('js/jquery.waypoints.min.js') }}" defer></script>
+    <script src="{{ asset('js/sticky.js') }}"></script>
+    <script src="{{ asset('js/jquery.stellar.min.js') }}" defer></script>
+    <script src="{{ asset('js/hoverIntent.js') }}" defer></script>
+    <script src="{{ asset('js/superfish.js') }}" defer></script>
+    <script src="{{ asset('js/main.js') }}" defer></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth'
+            });
+            calendar.render();
+        });
+    </script>
 </body>
-
-		{{-- <div class="fh5co-section-gray">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box" style="padding-top: 50px;">
-						<h3>Menus</h3>
-					</div>
-					@if (Session::has('menuCreated'))
-						<div class="alert alert-warning animate-box" role="alert">
-							{{ Session::get('menuCreated') }}
-						</div>
-					@endif
-					@if (Session::has('menuDeleted'))
-						<div class="alert alert-warning animate-box" role="alert">
-							{{ Session::get('menuDeleted') }}
-						</div>
-					@endif
-					@if (Session::has('updateData'))
-                        <div class="alert alert-warning animate-box" role="alert">
-                            {{ Session::get('updateData') }}
-                        </div>
-                    @endif
-				</div>
-			</div>
-			
-			<div class="container">
-				@foreach ($menuData as $menu)
-				<a href="{{ route('partner#viewMenu', $menu->id) }}">
-				<div class="col-md-4" style="padding-top:50px">
-					<div class="fh5co-team text-center animate-box">
-						<img class="img-thumbnail" src="{{ asset('uploads/meal/' . $menu->menu_image) }}" style="width:300px; height:200px;" alt="menu images">
-						<div>
-							<h1>{{ $menu->menu_title }}</h1>
-							<p>{{ $menu->menu_description }}</p>
-							@if ( Auth::user() -> role == 'partner')
-								<p><a href="{{ route('partner#updateMenu', $menu->id) }}">Update Menu >>></p>
-								<p><a href="{{ route('partner#deleteMenu', $menu->id) }}">Delete Menu >>></a></p>
-							@endif
-						</div>
-					</div>
-				</div>
-				</a>
-				@endforeach
-			</div>
-		</div> --}}
-
-	<script src="{{ asset('js/jquery.min.js') }}" defer></script>
-	<!-- jQuery Easing -->
-	<script src="{{ asset('js/jquery.easing.1.3.js') }}" defer></script>
-	<!-- Bootstrap -->
-	<script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
-	<!-- Waypoints -->
-	<script src="{{ asset('js/jquery.waypoints.min.js') }}" defer></script>
-	<script src="{{ asset('js/sticky.js') }}"></script>
-
-	<!-- Stellar -->
-	<script src="{{ asset('js/jquery.stellar.min.js') }}" defer></script>
-	<!-- Superfish -->
-	<script src="{{ asset('js/hoverIntent.js') }}" defer></script>
-	<script src="{{ asset('js/superfish.js') }}" defer></script>
-	
-	<!-- Main JS -->
-	<script src="{{ asset('js/main.js') }}" defer></script>
-
-	@endsection
+@endsection
