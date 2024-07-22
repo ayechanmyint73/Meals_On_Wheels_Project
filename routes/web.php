@@ -136,6 +136,7 @@ Route::group(['prefix' => 'volunteer'], function () {
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin#index'); //admin dashboard
     Route::get('/allMembers', [AdminController::class, 'allMembers'])->name('admin#allMembers');
+    Route::post('/admin/reassessment/{id}', [AdminController::class, 'reviewReassessment'])->name('admin.reassessment.review');
     Route::get('/allPartner', [AdminController::class, 'allPartners'])->name('admin#allPartners');
     Route::get('/allVolunteers', [AdminController::class, 'allVolunteers'])->name('admin#allVolunteers');
     Route::get('/allDonors', [AdminController::class, 'allDonors'])->name('admin#allDonors');
