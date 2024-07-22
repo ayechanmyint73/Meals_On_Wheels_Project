@@ -75,7 +75,7 @@
 
 					<input type="hidden" class="form-control" placeholder="Put your partner name here" name="partner" value="{{ $partnerData->id }}" required>
 
-					<input type="submit" value="Update Menu" class="update_btn p-3">
+					<input type="submit" value="Update Menu" class="btn btn-primary p-3" style="margin: 25px 0;">
 				</div>
 				{{-- create menu form ends --}}
 			</form>

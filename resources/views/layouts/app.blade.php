@@ -78,7 +78,7 @@
                 <li class="active"><a href="/">Home</a></li>
                 <li><a href="/donationFee">Donate</a></li>
                 <li>
-                  <a href="{{ route('choose.interest') }}" class="fh5co-sub-ddown">Support Us</a>
+                  <a href="{{ route('choose.interest') }}" class="fh5co-sub-ddown">Get Involved</a>
                   <ul class="fh5co-sub-menu">
                     <li><a href="{{ route('choose.interest') }}">Be a member</a></li>
                     <li><a href="{{ route('choose.interest') }}">Volunteer</a></li>
@@ -110,25 +110,22 @@
   @yield('content')
   <!-- End Content -->
 
-  <footer style="margin-top: auto;">
-    <div id="footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-md-offset-3 text-center">
-            <p class="fh5co-social-icons">
-              <a href="#"><i class="icon-twitter2"></i></a>
-              <a href="#"><i class="icon-facebook2"></i></a>
-              <a href="#"><i class="icon-instagram"></i></a>
-              <a href="#"><i class="icon-dribbble2"></i></a>
-              <a href="#"><i class="icon-youtube"></i></a>
-            </p>
-            <p>Copyright 2022 MerryMeal ~ Meals on Wheels <a href="#">Charity</a>. All Rights Reserved.</p>
-          </div>
+  <footer class="bg-light py-5 mt-auto">
+    <div class="container">
+        <!-- Copyright and Legal Links -->
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="text-muted mb-0">&copy; 2024 MerryMeal ~ Meals on Wheels Charity. All Rights Reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item"><a href="/terms" class="text-muted">Privacy Policy</a></li>
+                    <li class="list-inline-item"><a href="/terms" class="text-muted">Terms of Use</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
     </div>
-  </footer>
-
+</footer>
   <!-- jQuery -->
   <script src="{{ asset('js/jquery.min.js') }}"></script>
   <!-- jQuery Easing -->

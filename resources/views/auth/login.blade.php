@@ -83,7 +83,7 @@
                             </div>
                         </form>
                         <br>
-                        <h4>Don't have an account yet? <span><a href="{{ route('register') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Register here.</a></span></h4>
+                        <p>Don't have an account yet? <span><a href="{{ route('choose.interest') }}" class="text-sm text-gray-700 dark:text-gray-500" style="text-decoration: underline;">Register here</a></span></p>
                     </div>
                 </div>
                 {{-- login form ends --}}

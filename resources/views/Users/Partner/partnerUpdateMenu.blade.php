@@ -71,7 +71,7 @@
 
 					<input type="hidden" class="form-control" placeholder="Put your partner name here" name="partner" value="{{ $partnerData->id }}" required>
 
-					<input type="submit" value="Update Menu" class="update_btn p-3">
+					<input type="submit" value="Update Menu" class="btn btn-primary p-3" style="margin: 25px 0;">
 				</div>
 			</form>
 		</div>
@@ -81,55 +81,7 @@
 </body>
 
 
-		{{-- <div class="container">
-			<div class="col-md-8 col-md-offset-2 text-center animate-box">
-				<h1 style="margin-top: 50px; color:#003366; font-weight: bold; text-transform:capitalize;">Update {{ $updateMenu->menu_title }} </h1>
-			</div>
-
-			<div class="row">
-				<form action="{{ route('partner#saveUpdate', $updateMenu->id) }}" method="POST" enctype="multipart/form-data">
-					@csrf
-					<div class="col-sm-6 animate-box">									
-						@if ($updateMenu->menu_image)
-							<img src="{{ asset('uploads/meal/'. $updateMenu->menu_image) }}" class="img-thumbnail" alt="menu image ">
-							<br>
-						@endif
-					</div>
-					<div class="col-sm-6" style="padding-left: 60px">
-						<div class="row">
-							<div>
-								<div class="form-group animate-box">
-									<label for="basic-url">Menu Title</label>
-									<input type="text" class="form-control" placeholder="Put your menu title here" name="menu_title" value="{{ old('menu_title', $updateMenu->menu_title) }}" required>
-								</div>
-							</div>
-							<div>
-								<div class="form-group animate-box">
-									<label for="basic-url">Menu Description</label>
-									<textarea class="form-control" id="" cols="30" rows="7" placeholder="Put your menu description here" name="menu_description" required>{{ old('menu_description', $updateMenu->menu_description) }}</textarea>
-								</div>
-							</div>
-							<div>
-								<div class="form-group animate-box">
-									<label for="basic-url">Menu Picture</label>
-									<input type="file" class="form-control" name="menu_image" value="{{ $updateMenu->menu_image }}" required>
-								</div>
-							</div>
-							<div>
-								<input type="hidden" class="form-control" placeholder="Put your partner name here" name="partner" value="{{ $partnerData->id }}" required>
-							</div>
-							<div>
-								<div class="form-group animate-box">
-									<input type="submit" value="Update" class="btn btn-primary">
-								</div>
-							</div>
-						</div>
-					</div>
-				</form>   
-			</div>
-			
-		</div> --}}
-		<!-- fh5co-blog-section -->
+		
 
 	<!-- jQuery -->
 

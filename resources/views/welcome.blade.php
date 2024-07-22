@@ -40,6 +40,31 @@
     #fh5co-features .feature-copy .btn {
         margin-top: auto; /* Pushes the button to the bottom */
     }
+        .accordion {
+        background-color: #eee;
+        border: none;
+        cursor: pointer;
+        padding: 10px 20px;
+        width: 100%;
+        text-align: left;
+        outline: none;
+        font-size: 16px;
+        transition: 0.4s;
+    }
+
+    .accordion:hover,
+    .accordion.active {
+        background-color: #ccc;
+    }
+
+    .panel {
+        display: none;
+        overflow: hidden;
+        padding: 10px 10px;
+        background-color: white;
+        text-align: left;
+    }
+
 </style>
     <body class="antialiased">
            <div id="fh5co-wrapper">
@@ -59,7 +84,11 @@
                 <!-- end:header-top -->
                 <div class="container" id="fh5co-features">
                     <div class="row">
-                        <div class="col-md-4">
+                    <div class="col-md-6 col-md-offset-3 text-center heading-section animate-box">
+                                <h3>Ways to Support</h3>
+                                <p>Discover various opportunities to contribute and make a positive impact with us.</p>
+                            </div>
+                        <div class="col-md-4 text-center animate-box" >
                             <div class="feature-left">
                                 <span class="icon">
                                     <i class="icon-profile-male"></i>
@@ -67,12 +96,12 @@
                                 <div class="feature-copy">
                                     <h2>Become a Volunteer</h2>
                                     <p>Join us in supporting our mission to nourish seniors in need. Your commitment makes a lasting impact.</p>
-                                    <a href="/register" class="btn btn-primary">Sign Up Now</a>
+                                    <a href="{{ route('register.form') }}?interest=volunteer" class="btn btn-primary">Sign Up Now</a>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 text-center animate-box">
                             <div class="feature-left">
                                 <span class="icon">
                                     <i class="icon-hand"></i>
@@ -80,12 +109,12 @@
                                 <div class="feature-copy">
                                     <h2>Partnership Opportunities</h2>
                                     <p>Partner with us to make a difference in the lives of seniors. Together, we can provide essential support and care.</p>
-                                    <a href="#" class="btn btn-primary">Partner With Us</a>
+                                    <a href="{{ route('register.form') }}?interest=partner" class="btn btn-primary">Partner With Us</a>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 text-center animate-box">
                             <div class="feature-left">
                                 <span class="icon">
                                     <i class="icon-wallet"></i>
@@ -99,246 +128,117 @@
                         </div>
                     </div>
 
-
-
-        
-                <div id="fh5co-feature-product" class="fh5co-section-gray">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12 text-center heading-section">
-                                <h3>Giving is Virtue.</h3>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                            </div>
-                        </div>
-        
-                        <div class="row row-bottom-padded-md">
-                            <div class="col-md-6 text-center animate-box">
-                                <p><img src="images/Home-Page-Learn-More-Tile.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></p>
-                            </div>
-                            <div class="col-md-6 text-center animate-box">
-                                <p><img src="images/bernie-almanzar-3G96E38VFEA-unsplash.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></p>
-                            </div>
-                            <div class="col-md-6 text-center animate-box">
-                                <p><img src="images/grab-qG6r2KPT4l4-unsplash.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></p>
-                            </div>
-                            <div class="col-md-6 text-center animate-box">
-                                <p><img src="images/cater-yang-4SAzs4iYn8I-unsplash.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="feature-text">
-                                    <h3>Love</h3>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="feature-text">
-                                    <h3>Compassion</h3>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="feature-text">
-                                    <h3>Charity</h3>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                </div>
-                            </div>
-                        </div>
-        
-                        
-                    </div>
-                </div>
-        
-                
+<br>
                 <div id="fh5co-portfolio">
-                    <div class="container">
-        
-                        <div class="row">
-                            <div class="col-md-6 col-md-offset-3 text-center heading-section animate-box">
-                                <h3>Our Gallery</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit est facilis maiores, perspiciatis accusamus asperiores sint consequuntur debitis.</p>
-                            </div>
-                        </div>
-        
-                        
-                        <div class="row row-bottom-padded-md">
-                            <div class="col-md-12">
-                                <ul id="fh5co-portfolio-list">
-        
-                                    <li class="two-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/austin-kehmeier-lyiKExA4zQA-unsplash.jpg); ">
-                                        <a href="#" class="color-3">
-                                            <div class="case-studies-summary">
-                                                <span>Give Love</span>
-                                                <h2>Donation is caring</h2>
-                                            </div>
-                                        </a>
-                                    </li>
-                                
-                                    <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/cover_bg_3.jpg); ">
-                                        <a href="#" class="color-4">
-                                            <div class="case-studies-summary">
-                                                <span>Give Love</span>
-                                                <h2>Donation is caring</h2>
-                                            </div>
-                                        </a>
-                                    </li>
-        
-                                    <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/li-lin-UOBK7OZMeMk-unsplash.jpg); "> 
-                                        <a href="#" class="color-5">
-                                            <div class="case-studies-summary">
-                                                <span>Give Love</span>
-                                                <h2>Donation is caring</h2>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="two-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/cover_bg_2.jpg); ">
-                                        <a href="#" class="color-6">
-                                            <div class="case-studies-summary">
-                                                <span>Give Love</span>
-                                                <h2>Donation is caring</h2>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>		
-                            </div>
-                        </div>
-        
-                        <div class="row">
-                            <div class="col-md-4 col-md-offset-4 text-center animate-box">
-                                <a href="#" class="btn btn-primary btn-lg">See Gallery</a>
-                            </div>
-                        </div>
-        
-                        
-                    </div>
-                </div>
-                
-        
-                
-                <div id="fh5co-content-section" class="fh5co-section-gray">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box" >
-                                <h3>Our Volunteers</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit est facilis maiores, perspiciatis accusamus asperiores sint consequuntur debitis.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="fh5co-testimonial text-center animate-box">
-                                    <figure>
-                                        <img src="images/michael-dam-mEZ3PoFGs_k-unsplash.jpg" alt="user">
-                                    </figure>
-                                    <blockquote>
-                                        <p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.&rdquo;</p>
-                                    </blockquote>
-                                    <span>Jean Doe, XYZ Co.</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="fh5co-testimonial text-center animate-box">
-                                    <figure>
-                                        <img src="images/client.jpg" alt="user">
-                                    </figure>
-                                    <blockquote>
-                                        <p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.&rdquo;</p>
-                                    </blockquote>
-                                    <span>John Doe, XYZ Co.</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="fh5co-testimonial text-center animate-box">
-                                    <figure>
-                                        <img src="images/claudio-schwarz-4H9xt2DNgNc-unsplash.jpg" alt="user">
-                                    </figure>
-                                    <blockquote>
-                                        <p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.&rdquo;</p>
-                                    </blockquote>
-                                    <span>John Doe, XYZ Co.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- fh5co-content-section -->
-        
-               
-        
-                <!-- END What we do -->
-        
-        
-                <div id="fh5co-blog-section" class="fh5co-section-gray">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-                                <h3>Recent From Blog</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit est facilis maiores, perspiciatis accusamus asperiores sint consequuntur debitis.</p>
+                                <h3>Our Impact</h3>
+                                <p>Hear heartfelt testimonials from our seniors and caregivers about their experiences with MerryMeal on Wheels.</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="container">
-                        <div class="row row-bottom-padded-md">
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div class="fh5co-blog animate-box">
-                                    <a href="#"><img class="img-responsive" src="images/redcharlie-t-7KEq9M0b0-unsplash.jpg" alt=""></a>
-                                    <div class="blog-text">
-                                        <div class="prod-title">
-                                            <h3><a href=""#>Meals on Wheels Mission in Location A</a></h3>
-                                            <span class="posted_by">Sep. 15th</span>
-                                            <span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
-                                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                            <p><a href="#">Learn More...</a></p>
-                                        </div>
-                                    </div> 
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div class="fh5co-blog animate-box">
-                                    <a href="#"><img class="img-responsive" src="images/venti-views-tQGi3b7d6rU-unsplash.jpg" alt=""></a>
-                                    <div class="blog-text">
-                                        <div class="prod-title">
-                                            <h3><a href=""#>Meals on Wheels Mission in Location B</a></h3>
-                                            <span class="posted_by">Sep. 15th</span>
-                                            <span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
-                                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                            <p><a href="#">Learn More...</a></p>
-                                        </div>
-                                    </div> 
-                                </div>
-                            </div>
-                            <div class="clearfix visible-sm-block"></div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div class="fh5co-blog animate-box">
-                                    <a href="#"><img class="img-responsive" src="images/cover_bg_3.jpg" alt=""></a>
-                                    <div class="blog-text">
-                                        <div class="prod-title">
-                                            <h3><a href=""#>Meals on Wheels Mission in Location C</a></h3>
-                                            <span class="posted_by">Sep. 15th</span>
-                                            <span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
-                                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                            <p><a href="#">Learn More...</a></p>
-                                        </div>
-                                    </div> 
-                                </div>
-                            </div>
-                            <div class="clearfix visible-md-block"></div>
-                        </div>
-        
                         <div class="row">
-                            <div class="col-md-4 col-md-offset-4 text-center animate-box">
-                                <a href="#" class="btn btn-primary btn-lg">Our Blog</a>
+                            <div class="col-md-6 text-center animate-box">
+                                <!-- Video iframe -->
+                                <iframe width="100%" height="315" src="video/testimony.mp4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                            <div class="col-md-6 text-center animate-box">
+                                <!-- Text content -->
+                                <p>"MerryMeal on Wheels provides nutritious, delicious meals with care and compassion, making a significant difference in the lives of seniors and their families. Their service offers not only food but also comfort and peace of mind for those who can no longer cook for themselves."</p>
+                                <p><strong>— Testimonials from grateful seniors and caregivers</strong></p>
                             </div>
                         </div>
-        
                     </div>
                 </div>
-                <!-- fh5co-blog-section -->
+
+                <div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+            <h3>Frequently Asked Questions</h3>
+            <p>Find answers to common questions about our services, volunteering, and donations.</p>
+        </div>
+    </div>
+    <div class="row">
+    <div class="col-md-12 text-center animate-box">
+        <div class="faq-item">
+            <button class="accordion">What services does MerryMeal on Wheels provide?</button>
+            <div class="panel">
+                <p>We offer nutritious meal delivery tailored to seniors who can't cook for themselves. Our services include personalized meal planning, emergency meal kits, comfort packages, and community engagement activities.</p>
             </div>
         </div>
-          
-        
+        <div class="faq-item">
+            <button class="accordion">How can I request meal delivery?</button>
+            <div class="panel">
+                <p>To request meal delivery, you need to be a registered member or caregiver. Please fill out the <a href="{{ route('register.form') }}?interest=member">registration form</a> on our website to get started.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="accordion">Are there any special dietary options available?</button>
+            <div class="panel">
+                <p>Yes, we offer meals that accommodate various dietary needs such as low-sodium, diabetic-friendly, and gluten-free options. Please let us know your dietary requirements when you request meals.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="accordion">How can I volunteer with MerryMeal on Wheels?</button>
+            <div class="panel">
+                <p>We welcome volunteers to help with meal preparation and delivery. If you're interested in volunteering, please visit our <a href="{{ route('register.form') }}?interest=volunteer">volunteer registration form</a> for more information and to sign up.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="accordion">How can I make a donation?</button>
+            <div class="panel">
+                <p>To make a donation, visit our <a href="/donationFee">donation page</a>. We accept one-time and recurring donations, as well as in-kind contributions. Your support helps us continue providing essential services to seniors in need.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="accordion">Can I customize my meal plan?</button>
+            <div class="panel">
+                <p>Yes, we offer personalized meal plans based on your dietary needs and preferences. Please contact us to discuss your requirements and preferences so we can create a meal plan that suits you.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="accordion">What should I do if I have a complaint or feedback?</button>
+            <div class="panel">
+                <p>We value your feedback and strive to improve our services. Please reach out to us via our <a href="/contact">contact form</a>, or email us at MealsOnWheels@gmail.com. We will address your concerns as promptly as possible.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="accordion">How do I get in touch with MerryMeal on Wheels?</button>
+            <div class="panel">
+                <p>You can contact us via phone at +9986554677, email at MealsOnWheels@gmail.com, or through our <a href="/contact">contact form</a> on our website. We’re here to help with any questions or concerns you may have.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="accordion">How can I become a food provider partner?</button>
+            <div class="panel">
+                <p>If you're interested in becoming a food provider partner, please register through our <a href="{{ route('register.form') }}?interest=partner">partner registration form</a> for more information.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+    var accordions = document.getElementsByClassName('accordion');
+
+    for (var i = 0; i < accordions.length; i++) {
+        accordions[i].addEventListener('click', function () {
+            this.classList.toggle('active');
+            var panel = this.nextElementSibling;
+
+            if (panel.style.display === 'block') {
+                panel.style.display = 'none';
+            } else {
+                panel.style.display = 'block';
+            }
+        });
+    }
+});
+
+</script>
     </body>
 @endsection

@@ -5,31 +5,29 @@
 @section('content')
 <div class="container">
     <div class="text-center mb-4">
-        <h2>Select Your Interest</h2>
+        <h1 style="text-align: center; color:#003366; font-weight: bold; margin: 25px 0;">Select Your Interest</h1>
     </div>
     <div class="row justify-content-center">
         <!-- Member Box -->
-        <div class="col-md-4 mb-4">
-            <a href="{{ route('register.form') }}?interest=member" class="interest-box">
-                <img src="{{ asset('images/member.jpg') }}" alt="Member" class="img-fluid">
-                <h3>Be a Member</h3>
-            </a>
+        <div class="col-md-4 mb-4 text-center">
+            <img src="{{ asset('images/member.jpg') }}" alt="Member" class="img-fluid mb-3">
+            <p>If you are a senior in need of support, we are here to serve you. Join our program to receive nourishing meals and care tailored to your needs.</p>
+            <a href="{{ route('register.form') }}?interest=member" class="btn btn-primary">Member</a>
         </div>
-        
+
+
         <!-- Volunteer Box -->
-        <div class="col-md-4 mb-4">
-            <a href="{{ route('register.form') }}?interest=volunteer" class="interest-box">
-                <img src="{{ asset('images/volunteer.jpeg') }}" alt="Volunteer" class="img-fluid">
-                <h3>Volunteer</h3>
-            </a>
+        <div class="col-md-4 mb-4 text-center">
+            <img src="{{ asset('images/volunteer.jpeg') }}" alt="Member" class="img-fluid mb-3">
+            <p>Help us make a difference by volunteering your time and skills. Your support enhances our ability to serve the community effectively.</p>
+            <a href="{{ route('register.form') }}?interest=volunteer" class="btn btn-primary">Volunteer</a>
         </div>
-        
+
         <!-- Partner Box -->
-        <div class="col-md-4 mb-4">
-            <a href="{{ route('register.form') }}?interest=partner" class="interest-box">
-                <img src="{{ asset('images/partner3.jpg') }}" alt="Partner" class="img-fluid">
-                <h3>Partner</h3>
-            </a>
+        <div class="col-md-4 mb-4 text-center">
+            <img src="{{ asset('images/partner3.jpg') }}" alt="Member" class="img-fluid mb-3">
+            <p>Join us as a partner to support our mission through collaboration and resources. Together, we can achieve greater impact.</p>
+            <a href="{{ route('register.form') }}?interest=partner" class="btn btn-primary">Partner</a>
         </div>
     </div>
 </div>

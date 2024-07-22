@@ -5,69 +5,123 @@
 @extends('Users.Admin.layouts.app')
 
 @section('content')
-		
-<div id="fh5co-services-section">
-	@if (Session::has('dataInform'))
-		<h4 class="alert alert-warning animate-box text-center" role="alert">
-			{{ Session::get('dataInform') }}
-		</h4>
-	@endif
-	<div class="container">
-		<div class="row display-flex justify-content">
-			<div class="col-md-6 col-sm-6 col-md-offset-3">
-				<div class=" animate-box">
-					<div class="col-md-12 ">
-						<h3>General Information</h3>
-						<form action="{{ route('admin#userUpdated', $userData->id) }}" method="POST">
-							@csrf
-							<label class="userManagement">Name</label><br>
-							<input name="name" class="input-md col-md-12" type="text" value="{{ old('name', $userData->name) }}"/>
 
-							{{-- <label class="userManagement">Gender</label><br> --}}
-							<input name='gender' class="input-md col-md-12" type="hidden" value="{{ old('gender', $userData->gender) }}"/><br><br>
+<style>
+    input[type=text] , input[type=number] {
+      width: 100%;
+      padding: 12px 20px;
+      /* margin: 8px 0; */
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
 
-							<label class="userManagement">Age</label><br>
-							<input name="age" class="input-md col-md-12" type="text" value="{{ old('age', $userData->age) }}"/><br><br>
+    .btns{
+        margin: 20px 0;
+    }
+</style>
 
-							<label class="userManagement">Contact</label><br>
-							<input name='phone' class="input-md col-md-12" type="text" value="{{ old('phone', $userData->phone) }}"/><br><br>
+<body>
+    <div class="container">
+        <h1 class="text-center" style="text-align: center; color:#003366; font-weight: bold; padding: 25px 0;">Profile Settings</h1>
 
-							<label class="userManagement">Address</label><br>
-							<input name="address" class="input-md col-md-12" type="text" value="{{ old('address', $userData->address) }}"/><br><br>
+        <div class="row" style="margin: 20px 0;">
+            <div class="col-sm-4">
+                <img src="/images/profile_pic.svg" alt="profile image" class="img-fluid img-thumbnail">
+            </div>
+            <div class="col-sm-8" style=" color:#003366; justify-content: center; align-items: center;">
+                <h3 style="text-transform: capitalize; color:#003366; font-weight: bold;">{{ $userData->name }}</h3>
+                <h4>{{ $userData->email }} <span> </span></h4>
+            </div>
+        </div>
 
-							<label class="userManagement">Email</label><br>
-							<input name='email' class="input-md col-md-12" type="text" value="{{ old('email', $userData->email) }}"/><br><br>
+        <div>
+            <h2 style="margin-bottom: 0; color:#003366;">Account</h2><hr>
+            <div class="">
+                @if (Session::has('dataInform'))
+                    <h4 class="alert alert-success animate-box text-center" role="alert">
+                        {{ Session::get('dataInform') }}
+                    </h4>
+                @endif
 
-							<div class="text-center"> 
-								<button class="btn-primary">Update</button> &nbsp;
-								<a href="{{ route('admin#allMembers') }}">Cancel</a>
-							</div>
-						</form>
-					</div>
-				</div>
-				<div class=" animate-box">
-					<div class="col-md-12 ">
-						<h3 class="mt-5 pt-5">Partner Details</h3>
-						<form action="{{ route('admin#partnerUpdated', $userData->id) }}" method="POST">
-							@csrf
-							<label class="userManagement">Restaurant Name</label><br>
-							<input name="partnership_restaurant" class="input-md col-md-12" type="text" value="{{ old('partnership_restaurant', $partnerData->partnership_restaurant) }}"/><br><br>
+                <div class="">
+                    <form action="{{ route('admin#userUpdated', $userData->id) }}" method="POST">
+                        @csrf
+                        <div class="row mb-4">
+                            <label for="name" class="col-md-2 col-form-label userManagement">Name</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="name"  value="{{ old('name', $userData->name) }}" required>
+                            </div>
+                        </div>
 
-							<label class="userManagement">Duration</label><br>
-							<input name="partnership_restaurant" class="input-md col-md-12" type="text" value="{{ old('partnership_duration', $partnerData->partnership_duration) }}"/><br><br>
+                        <input name='gender' class="input-md " type="hidden" value="{{ old('gender', $userData->gender) }}"/>
 
-							<div class="text-center"> 
-								<button class="btn-primary">Update</button> &nbsp;
-								<a href="{{ route('admin#allMembers') }}">Cancel</a>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+                        <div class="row mb-4">
+                            <label for="age" class="col-md-2 col-form-label userManagement">Age</label>
+                            <div class="col-md-10">
+                                <input type="number" class="form-control" name="age" value="{{ old('age', $userData->age) }}" required>
+                            </div>
+                        </div>
 
-<!-- END What we do -->
+                        <div class="row mb-4">
+                            <label for="email" class="col-md-2 col-form-label userManagement">Email</label>
+                            <div class="col-md-10">
+                                <input type="email" class="form-control" name="email"  value="{{ old('email', $userData->email) }}" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <label for="phone" class="col-md-2 col-form-label userManagement">Contact</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="phone" value="{{ old('phone', $userData->phone) }}" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <label for="address" class="col-md-2 col-form-label userManagement">Address</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="address" value="{{ old('address', $userData->address) }}" required>
+                            </div>
+                        </div>            
+                        
+                        <div class="text-center btns"> 
+                            <button class="btn btn-primary">Update</button> &nbsp;
+                            <button class="btn btn-danger"><a href="#" style="font-size: 15px;">Cancel</a></button>
+                        </div>
+            
+                    </form>
+            
+                    <form action="{{ route('admin#partnerUpdated', $userData->id) }}" method="POST">
+                        @csrf
+                        <h3>Specific Requirements</h3>
+
+                        <div class="row mb-4">
+                            <label for="partnership_restaurant" class="col-md-2 col-form-label userManagement">Restaurant Name</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="partnership_restaurant" value="{{ old('partnership_restaurant', $partnerData->partnership_restaurant) }}" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <label for="partnership_duration" class="col-md-2 col-form-label userManagement">Partnership Duration</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="partnership_duration" value="{{ old('partnership_duration', $partnerData->partnership_duration) }}" required>
+                            </div>
+                        </div>   
+            
+                        <div class="text-center btns"> 
+                            <button class="btn btn-primary">Update</button> &nbsp;
+                            <button class="btn btn-danger"><a href="#" style="font-size: 15px;">Cancel</a></button>
+                        </div>
+                    </form>
+
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</body>
+
 
 @endsection
