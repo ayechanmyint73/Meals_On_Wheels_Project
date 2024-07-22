@@ -81,6 +81,29 @@
 			</div>
 		</div>
 		{{-- allergens & info ends --}}
+
+		{{-- food safety starts --}}
+		<h3 style="margin-top: 50px; color:#003366; font-weight: bold; text-transform:capitalize;">Food Safety Information </h3>
+		<div class="row">
+			{{-- allergens --}}
+			<div class="col-sm-4">
+				<h4 class="text-danger" style="font-weight: bold;">Ingredients</h4>
+				<p class="all_text">{{ $viewMenu->ingredients }}</p>
+			</div>
+
+			{{-- infomation --}}
+			<div class="col-sm-8">
+				<h4 class="text-danger" style="font-weight: bold;">Additional Information</h4>
+				<p class="all_text">The additional food safety considerations are as follows: <br>
+					<span>Expiry Date - {{ $viewMenu->expiry_date }}</span><br>
+					<span>Food Safety Training Completed Status - {{ $viewMenu->safety_training }}</span><br>
+					<span>Separate Storage for Raw and Cooked Food - {{ $viewMenu->separate_storage }}</span><br>
+				</p>
+				
+				<a href="{{ route('partner#foodSafety') }}" style="text-decoration: underline; color:#003366;">Click here to view food safety standards -> </a>
+			</div>
+		</div>
+		{{-- food safety ends --}}
 	</div>
 </body>
 

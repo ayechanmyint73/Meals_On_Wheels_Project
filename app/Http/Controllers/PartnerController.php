@@ -104,6 +104,10 @@ class PartnerController extends Controller
             'menu_image' => 'required',
             'menu_allergens' => 'required',
             'menu_nutritions' => 'required',
+            'ingredients' => 'required',
+            'safety_training' => 'required',
+            'expiry_date' => 'required',
+            'separate_storage' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -127,6 +131,11 @@ class PartnerController extends Controller
         $menu->menu_description = $request->input('menu_description');
         $menu->menu_allergens = $request->input('menu_allergens');
         $menu->menu_nutritions = $request->input('menu_nutritions');
+        $menu->ingredients = $request->input('ingredients');
+        $menu->safety_training = $request->input('safety_training');
+        $menu->expiry_date = $request->input('expiry_date');
+        $menu->separate_storage = $request->input('separate_storage');
+
         $menu->partner_id = $request->input('partner');
         $menu->save();
         return redirect()->route('partner#index')->with(['menuCreated' => 'Menu Has Been Created Sucessfully!']);
@@ -195,6 +204,10 @@ class PartnerController extends Controller
             'menu_description' => $request->menu_description,
             'menu_allergens' => $request->menu_allergens,
             'menu_nutritions' => $request->menu_nutritions,
+            'ingredients' => $request->ingredients,
+            'expiry_date' => $request->expiry_date,
+            'safety_training' => $request->safety_training,
+            'separate_storage' => $request->separate_storage,
             'partner_id' => $request->partner,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
