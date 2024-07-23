@@ -323,4 +323,11 @@ class AdminController extends Controller
         return redirect()->back()->with('dataInform', $message);
     }
 
+    //GET UPDATE PROFILE
+    public function updateProfile($user_id){
+
+        $userData = User::where('id', $user_id)->First();
+
+        return view('Users.Admin.updateAdmin')->with(['userData' => $userData, ]);
+    }
 }
