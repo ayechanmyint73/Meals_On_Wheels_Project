@@ -14,8 +14,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
-    <div id="fh5co-services-section" class="container mx-auto px-4 py-8">
-        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+    <div id="" class="container mx-auto px-4 py-8">
+        <div class="">
             <div class="p-6">
                 <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">
                     Delivery Status - Volunteer
@@ -36,6 +36,7 @@
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Delivery Status</th>
                             </tr>
                         </thead>
+
                         <tbody class="bg-white divide-y divide-gray-200">
                             @foreach($deliveryData as $delivery)
                             <tr>
@@ -72,6 +73,7 @@
                             </tr>
                             @endforeach
                         </tbody>
+                        
                     </table>
                 </div>
             </div>

@@ -24,8 +24,8 @@ class MemberController extends Controller
     public function index()
     {
         $member_data = Member::where('user_id', Auth::id())->first();
-        //dd($member_data);
-        return view('Users.Member.memberIndex')->with(['memberData' => $member_data]);
+        $menuData = Menu::all();
+        return view('Users.Member.memberIndex')->with(['memberData' => $member_data, 'menuData' => $menuData]);
     }
 
 

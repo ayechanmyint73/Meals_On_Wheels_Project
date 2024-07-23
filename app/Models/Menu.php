@@ -16,6 +16,10 @@ class Menu extends Model
         'menu_image',
         'menu_allergens',
         'menu_nutritions',
+        'ingredients',
+        'safety_training',
+        'expiry_date',
+        'separate_storage',
     ];
 
     public function partners(){

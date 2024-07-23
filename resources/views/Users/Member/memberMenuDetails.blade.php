@@ -162,70 +162,34 @@
 			</div>
 		</div>
 		{{-- allergens & info ends --}}
+
+		{{-- food safety starts --}}
+		<h3 style="margin-top: 50px; color:#003366; font-weight: bold; text-transform:capitalize;">Food Safety Information </h3>
+		<div class="row">
+			{{-- allergens --}}
+			<div class="col-sm-4">
+				<h4 class="text-danger" style="font-weight: bold;">Ingredients</h4>
+				<p class="all_text">{{ $viewMenu->ingredients }}</p>
+			</div>
+
+			{{-- infomation --}}
+			<div class="col-sm-8">
+				<h4 class="text-danger" style="font-weight: bold;">Additional Information</h4>
+				<p class="all_text">The additional food safety considerations are as follows: <br>
+					<span>Expiry Date - {{ $viewMenu->expiry_date }}</span><br>
+					<span>Food Safety Training Completed Status - {{ $viewMenu->safety_training }}</span><br>
+					<span>Separate Storage for Raw and Cooked Food - {{ $viewMenu->separate_storage }}</span><br>
+				</p>
+				
+				<a href="{{ route('partner#foodSafety') }}" style="text-decoration: underline; color:#003366;">Click here to view food safety standards -> </a>
+			</div>
+		</div>
+		{{-- food safety ends --}}
 	</div>
 	
 	{{-- menu details page ends --}}
 
-    {{-- <div id="">
-        {{-- title starts --}}
-        {{-- <div class="row">
-            <div class="col-md-8 col-md-offset-2 text-center animate-box">
-                <h1 style="margin-top: 50px; color:#003366; font-weight: bold; text-transform:capitalize;">{{ $viewMenu->menu_title }} - Menu Details </h1>
-            </div>
-        </div> --}}
-        {{-- title ends --}}
-        
-            
-        {{-- <div class="container">
-            <div class="row row-bottom-padded-md">
-                <div class="container">
-                    <div class="row">
-                        <div class="jumbotron animate-box">
-                            <div class="form-floating mb-3" style="padding-bottom: 50px">
-                                @if ($viewMenu->menu_image)
-                                    <img src="{{ asset('uploads/meal/'. $viewMenu->menu_image) }}" class="img-thumbnail" alt="category image ">
-                                    <br>
-                                @endif
-                            </div>
-                            <div class="feature-text animate-box">
-                                <h1>{{ $viewMenu->menu_title }}</h1>
-                                <p>{{ $viewMenu->menu_description }}</p>
-                            </div>
-                            <div class="feature-text animate-box">
-                                <h3>Time Availability</h3>
-                                <p><?php echo $message; ?></p>
-                            </div>
-                            <div class="feature-text animate-box">
-                                <h3>Meal Type</h3>
-                                <p><?php echo $meal_type; ?></p>
-                            </div>
-                            
-                            <div class="col">
-                                <div class="form-group animate-box">
-                                    <a href="{{ route('member#foodSafety') }}"> <input type="submit" value="Food Safety" class="btn btn-primary"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                                    
-                                    @if( $memberData->member_meal_duration != 0 )
-                                    @if($message == "This Meal is available today")
-                                    <div class="row animate-box">
-                                        <div class="col-sm-1">
-                                            <div class="form-group animate-box">
-                                                <a href="{{ route('member#orderConfirmation', [ 'partner_id' => $viewMenu -> partner_id, 'menu_id' => $viewMenu-> id, 'user_id' => Auth()->user()->id]) }}"> <input type="submit" value="Order" class="btn btn-primary"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endif
-                                    @endif
-            
-            </div>
-            
-        </div> --}}
-    {{-- </div> --}}
+
 </body>
     
 

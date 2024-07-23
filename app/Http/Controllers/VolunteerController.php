@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Menu;
+use App\Models\Deliver;
 use App\Models\User;
 use App\Models\Volunteer;
 use Illuminate\Http\Request;
@@ -16,10 +17,12 @@ class VolunteerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $volunteer_data = Volunteer::where('user_id', Auth::id())->first();
-        return view('Users.Volunteer.volunteerIndex')->with(['volunteerData' => $volunteer_data]);
-    }
+{
+    $volunteerData = Volunteer::where('user_id', Auth::id())->first();
+    $deliveryData = Deliver::where('volunteer_id', Auth::id())->get();
+    return view('Users.Volunteer.volunteerIndex')
+        ->with(['volunteerData' => $volunteerData, 'deliveryData' => $deliveryData]);
+}
 
     public function viewAllMenu()
     {

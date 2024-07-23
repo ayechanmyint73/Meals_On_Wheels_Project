@@ -16,9 +16,10 @@ class Member extends Model
         'member_extends_reason',
         'service_eligibility',
         'dietary',
+        'reassessment_status',
     ];
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }

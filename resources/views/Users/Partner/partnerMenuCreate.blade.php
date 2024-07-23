@@ -73,6 +73,24 @@
     				<textarea class="form-control" id="menu_nutritions" name="menu_nutritions" rows="5" placeholder="Enter nutrients in this format: Calories: XXX, Proteins: XXX, ..." required></textarea>
     				<small id="nutritionsHelp" class="form-text text-muted">Please enter nutrients in the format: Calories: XXX, Proteins: XXX, ...</small><br>
 
+					<label for="ingredients">Ingredients</label>
+					<input type="text" class="form-control" id="ingredients" name="ingredients" placeholder="Enter the ingredients included" required>
+
+					<label for="expiry_date">Expiry Date</label>
+					<input type="date" class="form-control" id="expiry_date" name="expiry_date" required>
+
+					<label for="safety_training">Food Safety Training Completed</label>
+					<select class="form-control" id="safety_training" name="safety_training" required>
+						<option value="yes">Yes</option>
+						<option value="no">No</option>
+					</select>
+
+					<label for="separate_storage">Separate Storage for Raw and Cooked Food</label>
+					<select class="form-control" id="separate_storage" name="separate_storage" required>
+						<option value="yes">Yes</option>
+						<option value="no">No</option>
+					</select>
+					
 					<input type="hidden" class="form-control" placeholder="Put your partner name here" name="partner" value="{{ $partnerData->id }}" required>
 
 					<input type="submit" value="Update Menu" class="btn btn-primary p-3" style="margin: 25px 0;">
