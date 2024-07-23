@@ -53,30 +53,51 @@
 <body style="min-height: 100vh;
 display: flex;
 flex-direction: column;">
+<style>
+     .nav-header #fh5co-logo img {
+        width: 70px; /* Set the desired width */
+        height: 70px; /* Maintain aspect ratio */
+    }
+
+  .sf-menu li a {
+    font-size: 16px;
+    font-weight: 500;
+    color: #3d6359;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    transition: color 0.3s ease;
+    text-decoration: none !important;
+  }
+
+  .sf-menu li a:hover {
+    color: #132923 !important; 
+  }
+    .dropdown-menu {
+        padding: 10px;
+    }
+
+    .dropdown-item {
+        font-size: 16px;
+        font-weight: normal;
+        color: #3d6359; 
+        text-transform: uppercase; 
+        white-space: nowrap; 
+        transition: color 0.3s ease;
+        text-decoration: none !important;
+    }
+
+    .dropdown-item:hover {
+        color: #132923 !important; 
+    }
+</style>
     <!-- Option 1: Bootstrap Bundle with Popper -->
-
-
-<!-- Start nav -->
-<div class="header-top">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-sm-6 text-left fh5co-link">
-                <a href="/contact">Contact</a>
-                <a href="/terms">Terms and Conditions</a>
-            </div>
-            <div class="col-md-6 col-sm-6 text-right fh5co-social">
-                <a href="#" class="grow"><i class="icon-facebook2"></i></a>
-                <a href="#" class="grow"><i class="icon-twitter2"></i></a>
-                <a href="#" class="grow"><i class="icon-instagram2"></i></a>
-            </div>
-        </div>
-    </div>
-</div>
 <header id="fh5co-header-section" class="sticky-banner">
     <div class="container">
         <div class="nav-header">
             <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-            <div id="fh5co-logo"><a href="/" ><img src="{{ url('/images/company_logo.png') }}" alt="company logo"></a></div>
+            <div id="fh5co-logo"><a href="/" ><img src="{{ url('/images/1.png') }}" alt="company logo"></a></div>
             <!-- START #fh5co-menu-wrap -->
            <!--Start end if -->
        
@@ -95,23 +116,46 @@ flex-direction: column;">
                         <li><a href="/about">About</a></li>
                          <li><a href="/contact">Contact</a></li>
                         
-                          <button type="button" class="btn btn-blue dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" 
-                          style="
-                                padding: 12px 16px;">
-                              {{ Auth()->user()->name }}
-                          </button>
-                          <ul class="dropdown-menu dropdown-menu-end">
-                              <li><a class="dropdown-item" href="{{ route('partner#updateProfile', Auth()->user()->id) }}">Update </a></li>
-                              <li><a class="dropdown-item" href="{{ route('order#AllOrderForPartner', Auth()->user()->id) }}">Orders </a></li>
-                              <li>
-                                  <a class="dropdown-item" href="#">
-                                      <form action="{{ route('logout') }}" method="post">
-                                          @csrf
-                                          <button type="submit" class="btn pt-0 pb-1 px-0 nav-link text-dark" style="button:focus { outline: none; }" >  <i class="fas fa-sign-out-alt" ></i> Logout </button>
-                                      </form>
-                                  </a>
-                              </li>
-                          </ul>
+                         <button type="button" class="btn btn-blue dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" 
+                            style="
+                                font-size: 16px;
+                                font-weight: 500;
+                                color: #3d6359 /* White text */
+                                background-color: transparent; /* Transparent background */
+                                padding: 10px 20px;
+                                text-decoration: none !important; /* Remove underline */
+                                text-transform: uppercase; 
+                                display: inline-block; ">
+                            Account
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" style="width: auto;">
+                            <li style="padding: 10px 20px; ">
+                                <span><strong>{{ Auth()->user()->name }}</strong></span> 
+                                <br>{{ Auth()->user()->email }}</br> 
+                            </li>
+                            <li>
+                                <button class="dropdown-item" style="font-size: 25px;">
+                                    <a href="{{ route('partner#updateProfile', Auth()->user()->id) }}">
+                                        Update Profile
+                                    </a>
+                                </button>
+                            </li>
+                            <li>
+                                <button class="dropdown-item" style="font-size: 25px;">
+                                    <a href="{{ route('order#AllOrderForPartner', Auth()->user()->id) }}">
+                                        Orders
+                                    </a>
+                                </button>
+                            </li>
+                            <li>
+                                <form action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item" style="font-size: 25px;">
+                                        <a>Logout</a>
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>                  
                       
                       
                   

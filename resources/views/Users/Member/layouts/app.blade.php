@@ -54,6 +54,10 @@
 display: flex;
 flex-direction: column;">
  <style>
+     .nav-header #fh5co-logo img {
+        width: 70px; /* Set the desired width */
+        height: 70px; /* Maintain aspect ratio */
+    }
   .sf-menu li a {
     font-size: 20px;
     font-weight: bold;
@@ -92,7 +96,7 @@ flex-direction: column;">
     <div class="container">
         <div class="nav-header">
             <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-            <div id="fh5co-logo"><a href="{{ route('member#index') }}" ><img src="{{ url('/images/company_logo.png') }}" alt="company logo"></a></div>
+            <div id="fh5co-logo"><a href="{{ route('member#index') }}" ><img src="{{ url('/images/1.png') }}" alt="company logo"></a></div>
             <!-- START #fh5co-menu-wrap -->
            <!--Start end if -->
        
@@ -107,21 +111,22 @@ flex-direction: column;">
                         <li><a href="/contact">Contact</a></li>
                         
                         <button type="button" class="btn btn-blue dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" 
-                          style="
+                            style="
                                 font-size: 20px;
                                 font-weight: bold;
-                                color: #ffffff; /* White text */
-                                background-color: #3d6359; /* Light Green */
-                                border: none;
+                                color: #3d6359 /* White text */
+                                background-color: transparent; /* Transparent background */
                                 padding: 10px 20px;
-                                border-radius: 5px;
-                                transition: background-color 0.3s ease;
                                 text-decoration: none !important; /* Remove underline */
                                 text-transform: uppercase; 
                                 display: inline-block; ">
-                              {{ Auth()->user()->name }}
+                            Account
                         </button>
-                        <ul class="dropdown-menu dropdown-menu-end" style="min-width: auto;">
+                        <ul class="dropdown-menu dropdown-menu-end" style="width: auto;">
+                            <li style="padding: 10px 20px; ">
+                                <span><strong>{{ Auth()->user()->name }}</strong></span> 
+                                <br>{{ Auth()->user()->email }}</br> 
+                            </li>
                             <li>
                                 <button class="dropdown-item" style="font-size: 25px;">
                                     <a href="{{ route('member#updateProfile', Auth()->user()->id) }}">

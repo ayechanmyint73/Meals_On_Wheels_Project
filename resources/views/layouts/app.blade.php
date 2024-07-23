@@ -22,7 +22,11 @@
   <!-- Custom CSS -->
   <style>
   /* Navigation link styles */
-  
+  .nav-header #fh5co-logo img {
+        width: 70px; /* Set the desired width */
+        height: 70px; /* Maintain aspect ratio */
+    }
+
   .sf-menu li a {
     font-size: 16px;
     font-weight: bold;
@@ -65,7 +69,7 @@
         <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
         <div id="fh5co-logo">
           <a href="/">
-            <img src="{{ url('/images/company_logo.png') }}" alt="company logo">
+            <img src="{{ url('/images/1.png') }}" alt="company logo">
           </a>
         </div>
         <!-- START #fh5co-menu-wrap -->
