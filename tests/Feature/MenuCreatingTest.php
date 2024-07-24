@@ -69,6 +69,12 @@ class MenuCreatingTest extends TestCase
             'menu_title' => 'Meatball',
             'menu_description' => 'Homemade Chicken Meatball',
             'menu_image' => $file,
+            'menu_allergens' => 'Soy beans',
+            'menu_nutritions' => 'Protein',
+            'ingredients' => 'Chicken and Meatballs',
+            'expiry_date' => '2024-07-23',
+            'safety_training' => 'yes',
+            'separate_storage' => 'yes'
         ]);
 
         $response->assertSessionHas('menuCreated', 'Menu Has Been Created Sucessfully!');

@@ -137,6 +137,7 @@ class RegisterController extends Controller
                     Partner::create([
                         'user_id' => $user->id,
                         'partnership_restaurant' => $data['partnership_restaurant'],
+                        'partnership_address' => $data['address'],
                         'partnership_duration' => $data['partnership_duration'],
                     ]);
                     break;
