@@ -31,15 +31,32 @@
   .form-group label {
       font-weight: bold;
   }
+  .blur-container {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(40px);
+    padding: 20px 60px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 40px 50px;
+}
+.center-text {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 </style>
 
 <body>
     <div class="container">
         <div class="row" style="display: flex;">
             <div class="col" id="form">
-                <x-jet-validation-errors class="mb-4 alert alert-danger" role="alert"/>
+                <div class="blur-container">
+                    <x-jet-validation-errors class="mb-4 alert alert-danger" role="alert"/>
 
-                <h1 class="text-center" style="text-align: center; color:#003366; font-weight: bold; margin:25px 0;">Registration Form</h1>
+                    <h1 class="text-center" style="text-align: center; color:#003366; font-weight: bold; margin:25px 0;">Registration Form</h1>
 
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
