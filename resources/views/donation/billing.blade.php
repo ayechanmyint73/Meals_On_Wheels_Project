@@ -120,6 +120,20 @@
             transition: width 0.3s ease;
             width: 25%;
         }
+
+        body {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 1.6;
+        font-size: 16px;
+        background: #F5F5DC; /* Light Beige background */
+        color: #003366 ;
+        overflow-x: hidden;
+    }
     </style>
   </head>
   <body>

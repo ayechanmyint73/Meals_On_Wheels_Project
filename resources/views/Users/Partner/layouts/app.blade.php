@@ -50,9 +50,9 @@
 	<![endif]-->
 
   </head>
-<body style="min-height: 100vh;
-display: flex;
-flex-direction: column;">
+    <body style="min-height: 100vh;
+    display: flex;
+    flex-direction: column;">
 <style>
      .nav-header #fh5co-logo img {
         width: 70px; /* Set the desired width */

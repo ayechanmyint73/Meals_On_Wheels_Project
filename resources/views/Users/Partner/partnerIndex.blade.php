@@ -35,7 +35,7 @@
         background-position: center;
         color: white;
         text-align: center;
-        min-height: 700px;
+        height: 100%;
     }
 
     .fh5co-cover .desc {
@@ -193,10 +193,10 @@
     <div id="fh5co-page">
         <div class="fh5co-hero">
             <div class="fh5co-overlay"></div>
-            <div class="fh5co-cover text-center" data-stellar-background-ratio="0.5" style="background-image: url('{{ asset('images/partner_cover_img.webp') }}');">
+            <div class="fh5co-cover text-center" style="background-image: url('{{ asset('images/partner_cover_img.webp') }}'); background-repeat: no-repeat; width:100%;">
                 <div class="desc animate-box">
                     <h2><strong>Welcome to your Dashboard, {{ Auth()->user()->name }}</strong></h2>
-                    <span><a class="btn btn-primary btn-lg" href="">View Menu</a></span>
+                    <span><a class="btn btn-primary btn-lg" style="margin-right: 0;" href="">View Menu</a></span>
                 </div>
             </div>
         </div>
@@ -208,6 +208,7 @@
                 <div class="card feature-center">
                     <div class="feature-copy">
                         <h2>Today's Menu</h2>
+                        <span><a class="btn btn-primary btn-lg" href="{{ route('partner#createMenu') }}">Add New Menu</a></span>
                         <div class="menu-container">
                             @if (Session::has('menuCreated'))
                                 <div class="alert alert-success animate-box" role="alert">
