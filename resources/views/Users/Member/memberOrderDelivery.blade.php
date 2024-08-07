@@ -41,10 +41,23 @@
                             <td>{{ \Carbon\Carbon::parse($orderData->created_at)->format('H:i') }}</td>
                             <td><span class="badge badge-pill badge-info">{{ $orderData->order_cooking_status }}</span></td>
                             <td>{{ $deliverData->volunteer_name ?: 'Not assigned' }}</td>
-                            <td><span class="badge badge-pill badge-{{ $orderData->order_received_status == 'Received' ? 'success' : 'warning' }}">{{ $orderData->order_received_status }}</span></td>
+                            <td>
+                                @if($orderData->order_received_status == 'Received')
+                                    <!-- Badge for Received Status -->
+                                    <span class="badge badge-pill badge-success">
+                                        {{ $orderData->order_received_status }}
+                                    </span>
+                                @else
+                                    <!-- Badge for Delivery Status -->
+                                    <span class="badge badge-pill badge-warning">
+                                        {{ $deliverData->delivery_status ?: 'No delivery status' }}
+                                    </span>
+                                @endif
+                            </td>
                             <td>
                                 @if($orderData->order_received_status != 'Received')
                                     <form id="receiveForm" action="{{ route('member#updateMemberOrder', $orderData->id) }}" method="GET">
+                                        @csrf
                                         <input type="hidden" name="order_received_status" value="Received">
                                         <button id="receiveButton" type="submit" class="btn btn-success shadow-sm">Confirm Receipt</button>
                                     </form>

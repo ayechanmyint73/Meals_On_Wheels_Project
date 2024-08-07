@@ -59,14 +59,15 @@
                                             </form>
                                         </td>
                                         <td>
-                                            <form action="{{ route('deliver#updateDelivery', $delivery->id) }}" method="GET" class="d-flex align-items-center">
+                                            <form action="{{ route('deliver#updateDelivery', $delivery->id) }}" method="POST" class="d-flex align-items-center">
+                                                @csrf
                                                 <select name="delivery_status" class="form-control mr-2">
-                                                    <option value=""></option>
-                                                    <option value="Pick the meal">Pick up the meal</option>
-                                                    <option value="On the way to destination">On the way to destination</option>
-                                                    <option value="Arrived at destination">Arrived at destination</option>
+                                                    <option value="" {{ $delivery->delivery_status == '' ? 'selected' : '' }}></option>
+                                                    <option value="Pick up the meal" {{ $delivery->delivery_status == 'Pick up the meal' ? 'selected' : '' }}>Pick up the meal</option>
+                                                    <option value="On the way to destination" {{ $delivery->delivery_status == 'On the way to destination' ? 'selected' : '' }}>On the way to destination</option>
+                                                    <option value="Arrived at destination" {{ $delivery->delivery_status == 'Arrived at destination' ? 'selected' : '' }}>Arrived at destination</option>
                                                 </select>
-                                                <button type="submit" class="btn btn-warning">Send Status</button>
+                                                    <button type="submit" class="btn btn-warning">Send Status</button>
                                             </form>
                                         </td>
                                     </tr>
