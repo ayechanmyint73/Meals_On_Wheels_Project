@@ -92,55 +92,53 @@
 							<div class="card h-100 shadow-lg p-3 bg-white rounded">
 								<img src="{{ asset('uploads/meal/' . $menu->menu_image) }}" class="card-img-top" alt="menu image" style="width: 100%; height: 300px; object-fit: cover;">
 			
-								<?php 
-								$partner_id = DB::table('menus')->where('id',$menu->id)->value('partner_id');
-								$partner_user_id = DB::table('partners')->where('id',$partner_id)->value('user_id');
-								$partner_geolocation = DB::table('users')->where('id',$partner_user_id)->value('geolocation');
-								$user_geolocation = DB::table('users')->where('id',Auth()->user()->id)->value('geolocation');
-			
-								$user_arr = preg_split ("/\,/", $user_geolocation); 
-								$partner_arr = preg_split ("/\,/", $partner_geolocation);
-			
-								$Lat1 = $user_arr[0];
-								$Long1 = $user_arr[1];
-								$Lat2 = $partner_arr[0];
-								$Long2 = $partner_arr[1];
-								$DistanceKM = 0;
-			
-								$R = 6371;
-								$Lat = $Lat2 - $Lat1;
-								$Long = $Long2 - $Long1;
-			
-								$dLat1 = deg2rad($Lat);
-								$dLong1 = deg2rad($Long);
-			
-								$a = sin($dLat1 / 2) * sin($dLat1 / 2) +
-									 cos(deg2rad($Lat1)) * cos(deg2rad($Lat2)) *
-									 sin($dLong1 / 2) * sin($dLong1 / 2);
-			
-								$c = 2 * atan2(sqrt($a), sqrt(1 - $a));
-								$DistanceKM = $R * $c;
-								$DistanceKM = round($DistanceKM, 3);
-			
-								$weekday = date("w");
-			
-								if ($weekday == 0 || $weekday == 6) {
+								<?php
+
+									use Illuminate\Support\Facades\DB;
+
+									$partner_id = DB::table('menus')->where('id',$menu->id)->value('partner_id');
+									$partner_user_id = DB::table('partners')->where('id',$partner_id)->value('user_id');
+									$partner_geolocation = DB::table('users')->where('id',$partner_user_id)->value('geolocation');
+									$user_geolocation = DB::table('users')->where('id',Auth()->user()->id)->value('geolocation');
+
+									$user_arr = preg_split ("/\,/", $user_geolocation); 
+									$partner_arr = preg_split ("/\,/", $partner_geolocation);
+
+									$Lat1 = $user_arr[0];
+									$Long1 = $user_arr[1];
+									$Lat2 = $partner_arr[0];
+									$Long2 = $partner_arr[1];
+
+									$R = 6371;
+									$Lat = $Lat2 - $Lat1;
+									$Long = $Long2 - $Long1;
+
+									$dLat1 = deg2rad($Lat);
+									$dLong1 = deg2rad($Long);
+
+									$a = sin($dLat1 / 2) * sin($dLat1 / 2) +
+										cos(deg2rad($Lat1)) * cos(deg2rad($Lat2)) *
+										sin($dLong1 / 2) * sin($dLong1 / 2);
+
+									$c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+									$DistanceKM = $R * $c;
+									$DistanceKM = round($DistanceKM, 3);
+
+									$weekday = date("w");
+
+									// Determine meal type based on distance
 									if ($DistanceKM > 10) {
 										$meal_type = "Cold meal";
-										$message = "This Meal is available today";
 									} else {
 										$meal_type = "Hot meal";
-										$message = "This Meal available only from Monday through Friday";
 									}
-								} else {
-									if ($DistanceKM > 10) {
-										$meal_type = "Cold meal";
-										$message = "Support over weekend only";
+
+									// Determine availability based on day of the week
+									if ($weekday == 0 || $weekday == 6) {
+										$message = "This Meal is available today (Weekend)";
 									} else {
-										$meal_type = "Hot meal";
-										$message = "This Meal is available today";
+										$message = "This Meal is available today (Weekday)";
 									}
-								}
 								?>
 			
 								<div class="card-body">
