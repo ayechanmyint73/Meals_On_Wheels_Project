@@ -94,8 +94,6 @@
 			
 								<?php
 
-									use Illuminate\Support\Facades\DB;
-
 									$partner_id = DB::table('menus')->where('id',$menu->id)->value('partner_id');
 									$partner_user_id = DB::table('partners')->where('id',$partner_id)->value('user_id');
 									$partner_geolocation = DB::table('users')->where('id',$partner_user_id)->value('geolocation');
