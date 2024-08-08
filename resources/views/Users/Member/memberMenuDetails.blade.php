@@ -85,26 +85,22 @@
 							$message ="Within Delivery Range";
 						}
 							
-						$weekday=date("w");
-						//  echo $weekday."<br>";
-						if ($weekday == 0 ||$weekday == 6 ) {
-							if ($DistanceKM > 10) {
-								$meal_type = "Frozen";
-								$message = "This Meal is available today";
-							}else{
-								// sat or sun and distance less than 10 km
-								$meal_type = "Hot";
-								$message = "This Meal available only from Monday through Friday";
-							}
-						}else{
-							if ($DistanceKM > 10) {
-								$meal_type = "Frozen";
-								$message = "Support over weekend only";
-							}else{
-								$meal_type = "Hot";
-								$message = "This Meal is available today";
-							}
-						}			
+						if ($DistanceKM > 10) {
+							$meal_type = "Frozen";
+						} else {
+							$meal_type = "Hot";
+						}
+						
+						// Determine availability and order button visibility based on day of the week
+						$weekday = date("w");	
+						if ($weekday == 0 || $weekday == 6) {
+							$message = "This Meal is available today (Weekend)";
+							$showOrderButton = true;
+						} else {
+							$message = "This Meal is available today (Weekday)";
+							$showOrderButton = true;
+						}
+						
 	?>
 
 	{{-- menu details page starts --}}
@@ -123,21 +119,21 @@
 				<h1 style="margin-top: 50px; color:#003366; font-weight: bold; text-transform:capitalize;">{{ $viewMenu->menu_title }} - Menu Details </h1>
 				
 				<div class="d-flex justify-content-between align-items-center ">
-					<p class="text-left menu_loc">Time Availability - <?php echo $message; ?></p>
-					<p class="text-right menu_loc">Meal Type - <?php echo $meal_type; ?></p>
+					<p class="text-left menu_loc">Availability: {{ $message }}</p>
+					<p class="text-right menu_loc">Meal Type: {{ $meal_type }}</p>
 				</div>
 
 				<p>{{ $viewMenu->menu_description }}</p>
 
 			</div>
 
-			@if( $memberData->member_meal_duration != 0 )
-                @if($message == "This Meal is available today")
-                    <div class="animate-box d-flex justify-content-center align-items-center ">
-                        <a href="{{ route('member#orderConfirmation', [ 'partner_id' => $viewMenu -> partner_id, 'menu_id' => $viewMenu-> id, 'user_id' => Auth()->user()->id]) }}"> <input type="submit" value="Order Now" class="order_btn"></a>
-                    </div>
-                @endif
-            @endif
+			@if($memberData->member_meal_duration != 0 && $showOrderButton)
+				<div class="animate-box d-flex justify-content-center align-items-center ">
+					<a href="{{ route('member#orderConfirmation', ['partner_id' => $viewMenu->partner_id, 'menu_id' => $viewMenu->id, 'user_id' => Auth()->user()->id]) }}">
+						<input type="submit" value="Order Now" class="order_btn">
+					</a>
+				</div>
+			@endif
 		</div>
 		{{-- menu img and description ends --}}
 
